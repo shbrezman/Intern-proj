@@ -47,9 +47,10 @@ export class FillingDetailsComponent implements OnInit {
       }
     },
     error =>{
+      console.log(error)
      this.error = true;
     }
       )
   }
-  
+
 }
