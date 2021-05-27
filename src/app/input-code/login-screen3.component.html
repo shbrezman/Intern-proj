@@ -1,0 +1,22 @@
+<div class="container" style="width: 1000px;">
+  <h1>Hi {{userService.currentUser.name}}! Please type the mobile varification code you recived.</h1>
+  <br>
+  <div class="row pl-3">
+    <form  #inputsForm="ngForm">
+
+      <input #inp1 name="inp1" (keyup)="autotab(inp1, inp2)" class="col-1 "     style="font-size: 30px; text-align: center;" type="number" autofocus required maxlength=1 >
+      <input #inp2 name="inp2" (keyup)="autotab(inp2, inp3)" class="col-1 ml-4" style="font-size: 30px; text-align: center;" type="number" required maxlength=1 >
+      <input #inp3 name="inp3" (keyup)="autotab(inp3, inp4)" class="col-1 ml-4" style="font-size: 30px; text-align: center;" type="number" required maxlength=1 >
+      <input #inp4 name="inp4" (keyup)="autotab(inp4, inp4)" class="col-1 ml-4" style="font-size: 30px; text-align: center;" type="number" required maxlength=1 >
+
+
+    </form>
+  </div>
+
+  <br>
+  <p style="color: red;">{{errMsg}}</p>
+  <br>
+  <p>I did not recive, <a href="javascript:void(0)" (click)="resend()">resend</a></p>
+  <br>
+  <button class="btn btn-primary btn-lg" type="submit" (click)="chackPassword(inp1.value, inp2.value, inp3.value, inp4.value)">Continue</button>
+</div>

@@ -1,0 +1,2 @@
+1. **input-cose component** ===>>> creating pipe to convert the first latter to upper case.
+2. change text font to all app.

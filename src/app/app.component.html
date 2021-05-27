@@ -1,0 +1,13 @@
+
+<a href=""><h1 style="margin-left: 20px; position: absolute; color: rgb(90, 150, 240); ">Medica<span style="font-size: 50px;">&#9764;</span>Test</h1></a>
+<p *ngIf="!userService.IdentifiedUser" style="margin-left: 83%; margin-top: 10px;">Alredy have an account? <a [routerLink]="['/login-acces']"><b>Log in</b></a></p>
+<p *ngIf="userService.IdentifiedUser" style="margin-left: 84%; margin-top: 10px; font-size: 20px;">
+  <img class="mx-2" *ngIf="userService.IdentifiedUser" style="width: 60px; height: 60px; border-radius: 100%;" [src]="userService.currentUser.img" alt="">
+  <b>{{userService.currentUser.name}}</b></p>
+
+ <br>
+ <br>
+
+<div class="d-flex justify-content-center" >
+<router-outlet ></router-outlet>
+</div>

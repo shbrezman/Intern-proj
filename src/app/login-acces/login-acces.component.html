@@ -1,0 +1,11 @@
+<div class="container my-5 justify-content-center border">
+  <form>
+    <div class="form-group">
+
+      <label class="col-9 col" for="phoneNumber" style="font-size: 40px; margin-left: 130px; text-align:center">For log in please type your phone number:</label>
+      <input #inp style="width: 500px; font-size: 30px; margin: auto; text-align:center" class="col-3 m-2 just" type="number" class="form-control" id="phoneNumber" autofocus>
+      <br>
+      <button  class="btn btn-lg btn-primary" style="margin-left: 45%;" (click)="loginClick(inp.value)" [routerLink]="['/user-board']"  >LOG IN</button>
+    </div>
+  </form>
+</div>
