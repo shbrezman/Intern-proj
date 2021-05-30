@@ -20,7 +20,7 @@ export class LoginScreen2Component implements OnInit {
    }
 
   ngOnInit(): void {
-
+    
   }
 
 

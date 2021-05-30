@@ -12,7 +12,9 @@ export class UserService {
   baseUrl = 'http://localhost:8080/';
 
   IdentifiedUser = false;
-  errorMsg = ""
+  errorMsg = "";
+
+  ip_usersTable = new Map();
 
   currentUser: UserModel = {
     img: null,
