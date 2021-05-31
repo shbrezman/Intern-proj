@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserBoardComponent implements OnInit {
 
-  
+
 
   constructor(public userService: UserService) {
 
@@ -18,6 +18,9 @@ export class UserBoardComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
+    console.log(this.userService.currentUser);
+
 
   }
 
