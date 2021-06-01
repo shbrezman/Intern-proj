@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "angular-bootstrap-md": "^11.1.0",
+    "apexcharts": "^3.26.3",
     "bootstrap": "^5.0.0",
     "bootstrap-icons": "^1.4.1",
     "ngx-webcam": "^0.3.2",

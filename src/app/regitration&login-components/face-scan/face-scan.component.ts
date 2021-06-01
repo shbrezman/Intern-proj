@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import {WebcamImage} from 'ngx-webcam';
 import {Subject, Observable} from 'rxjs';
 
@@ -19,7 +19,7 @@ export class FaceScanComponent implements OnInit {
 
   }
   handleImage(webcamImage: WebcamImage): void {
-    
+
     this.webcamImage = webcamImage;
 
     this.userService.currentUser.img = webcamImage.imageAsDataUrl;

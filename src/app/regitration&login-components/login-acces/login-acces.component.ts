@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { UserModel } from './../models/user-model';
-import { UserService } from './../services/user.service';
+import { UserModel } from '../../models/user-model';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -40,6 +40,7 @@ export class LoginAccesComponent implements OnInit {
     this.password += p2;
     this.password += p3;
     this.password += p4;
+    
 
     this.userService.varifactionCode(this.password).subscribe((data) => {
       console.log(data);
@@ -48,7 +49,10 @@ export class LoginAccesComponent implements OnInit {
           .getUser(this.userService.currentUser.phoneNumber)
           .subscribe((user) => {
             this.userService.currentUser = user as UserModel;
+            this.userService.IdentifiedUser = true;
             this.router.navigate(['/user-board']);
+          },(err) =>{
+            this.errMsg = 'this phone number not register, please try different number';
           });
       } else {
         this.errMsg = 'The input password not matched, try again';

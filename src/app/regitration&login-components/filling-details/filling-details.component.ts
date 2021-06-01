@@ -1,6 +1,6 @@
-import { UserModel } from './../models/user-model';
+import { UserModel } from '../../models/user-model';
 import { HttpResponse } from '@angular/common/http';
-import { UserService } from './../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

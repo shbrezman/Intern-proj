@@ -1,5 +1,5 @@
-import { UserModel } from '../models/user-model';
-import { UserService } from '../services/user.service';
+import { UserModel } from '../../models/user-model';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginScreen2Component implements OnInit {
    }
 
   ngOnInit(): void {
-    
+
   }
 
 
