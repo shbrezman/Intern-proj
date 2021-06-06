@@ -7,7 +7,7 @@ import { FaceScanComponent } from './regitration&login-components/face-scan/face
 import { FillingDetailsComponent } from './regitration&login-components/filling-details/filling-details.component';
 import { EndOfRegComponent } from './regitration&login-components/end-of-reg/end-of-reg.component';
 import { UserBoardComponent } from './user-board/user-board.component';
-
+import { SuperBoardComponent } from './super-board/super-board.component';
 
 import { LoginAccesComponent } from './regitration&login-components/login-acces/login-acces.component';
 
@@ -18,9 +18,10 @@ const routes: Routes = [
   { path: 'faceScan', component:FaceScanComponent},
   { path: 'fillingDetails', component:FillingDetailsComponent},
   { path: 'end-of-registration', component:EndOfRegComponent},
-  { path: 'user-board', component:UserBoardComponent},
+  { path: 'intern-board', component:UserBoardComponent},
   { path: 'login-acces', component:LoginAccesComponent},
-  
+  { path: 'super-board', component:SuperBoardComponent},
+
 
 ];
 

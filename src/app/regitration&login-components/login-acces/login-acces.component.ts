@@ -40,7 +40,7 @@ export class LoginAccesComponent implements OnInit {
     this.password += p2;
     this.password += p3;
     this.password += p4;
-    
+
 
     this.userService.varifactionCode(this.password).subscribe((data) => {
       console.log(data);
@@ -50,7 +50,19 @@ export class LoginAccesComponent implements OnInit {
           .subscribe((user) => {
             this.userService.currentUser = user as UserModel;
             this.userService.IdentifiedUser = true;
-            this.router.navigate(['/user-board']);
+            if(this.userService.currentUser.roleNumber > 100 && this.userService.currentUser.roleNumber < 300)
+            {
+              this.userService.getAllUsers(this.userService.currentUser.medicalInstitution, 100)
+              .subscribe(list =>{
+                this.userService.users = list as UserModel[];
+                console.log(this.userService.users)
+              },err => console.log(err))
+              this.router.navigate(['/super-board'])
+            }
+            else{
+              this.router.navigate(['/intern-board']);
+            }
+
           },(err) =>{
             this.errMsg = 'this phone number not register, please try different number';
           });

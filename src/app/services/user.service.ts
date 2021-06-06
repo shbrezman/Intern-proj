@@ -14,27 +14,9 @@ export class UserService {
   IdentifiedUser = false;
   errorMsg = "";
 
-  ip_usersTable = new Map();
+  users : UserModel[];
 
-  currentUser: UserModel = {
-    img: null,
-    age: null,
-    country: "",
-    city: "",
-    graduationYear: null,
-    academicInstitution: "",
-    medicalInstitution: "",
-    residancy: "",
-    department: "",
-    residancyYear: null,
-    id : "",
-    name: "",
-    passportNumber: "",
-    phoneNumber: "",
-    password: null,
-    practices : [],
-    tests : [],
-  };
+  currentUser = new UserModel;
 
 
 
@@ -49,13 +31,19 @@ export class UserService {
     return this.http.get<T>(this.baseUrl + "api/users/getUser/" + phoneNumber)
   }
 
+  getAllUsers<T>(medicalInstitution?: String, roleNumber?: number): Observable<T> {
+    return this.http.post<T>(this.baseUrl + "api/users/getAllUsers",
+    {medicalInstitution: medicalInstitution, roleNumber: roleNumber}
+    )
+  }
+
   sendSms(): Observable<Object> {
     return this.http.post(this.baseUrl + "api/users/sendSms",
     {from:'Intern Academy', to: this.currentUser.phoneNumber, text: `Hello ${this.currentUser.name}, your code is: `}
     );
   }
 
-  
+
 
   varifactionCode(code): Observable<any> {
     return this.http.post(this.baseUrl + "api/users/varifacation",

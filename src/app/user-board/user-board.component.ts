@@ -1,6 +1,27 @@
 import { UserModel } from './../models/user-model';
 import { UserService } from './../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexDataLabels,
+  ApexTitleSubtitle,
+  ApexStroke,
+  ApexGrid
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  dataLabels: ApexDataLabels;
+  grid: ApexGrid;
+  stroke: ApexStroke;
+  title: ApexTitleSubtitle;
+};
 
 @Component({
   selector: 'app-user-board',
@@ -8,6 +29,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-board.component.css'],
 })
 export class UserBoardComponent implements OnInit {
+
+  @ViewChild("chart") chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
 
   singleScore: number;
 
@@ -42,7 +66,55 @@ export class UserBoardComponent implements OnInit {
     ]
   };
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService) {
+    
+    this.chartOptions = {
+      series: [
+        {
+          name: "score",
+          data: [10, 41, 35, 51, 49, 62, 69, 91]
+        }
+      ],
+      chart: {
+        height: 280,
+        width: 350,
+        type: "line",
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+      title: {
+        text: this.demoUser.name + " grid:",
+        align: "left"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    };
+
+  }
 
   ngOnInit(): void {
     console.log(this.userService.currentUser);

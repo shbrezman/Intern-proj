@@ -16,7 +16,8 @@ import { EndOfRegComponent } from './regitration&login-components/end-of-reg/end
 import { UserBoardComponent } from './user-board/user-board.component';
 import { LoginAccesComponent } from './regitration&login-components/login-acces/login-acces.component';
 import { AaaComponent } from './aaa/aaa.component';
-
+import { SuperBoardComponent } from './super-board/super-board.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 
@@ -36,6 +37,7 @@ import { AaaComponent } from './aaa/aaa.component';
     UserBoardComponent,
     LoginAccesComponent,
     AaaComponent,
+    SuperBoardComponent,
 
 
 
@@ -46,7 +48,8 @@ import { AaaComponent } from './aaa/aaa.component';
     AppRoutingModule,
     FormsModule,
     WebcamModule,
-    HttpClientModule
+    HttpClientModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,7 +30,8 @@ export class LoginScreen2Component implements OnInit {
 
     this.userService.sendSms().subscribe(data => {console.log(data)});
 
-
-
+  }
+  chack(aa){
+    console.log(aa);
   }
 }

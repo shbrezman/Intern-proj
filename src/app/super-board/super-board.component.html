@@ -1,0 +1,32 @@
+<div class="row mx-1">
+
+  <div class="col-3 border justify-content-center text-center">
+
+    <img class="m-3" [src]="demoUser.img" alt="" style="width: 160px; height: 160px; border-radius: 100%;" >
+    <h1>{{demoUser.name}}</h1>
+    <h4 class="py-1">{{demoUser.medicalInstitution}} Hospital</h4>
+    <h5 class="text-primary mb-4">A supervosor</h5>
+
+      <h1 class="text-info display-3">{{demoList.length}}</h1>
+      <h5 class="mb-5">Active Interns</h5>
+
+      <h1 class="text-warning display-3">{{internsAbove80}}</h1>
+      <h5 class="mb-5">Interns Archived > 80</h5>
+
+      <h1 class="text-success display-3">{{allScore / demoList.length | number : '1.1-1'}}</h1>
+      <h5 class="mb-5">Total Average</h5>
+
+
+
+  </div>
+  <div class="col-9 border">
+    <h3 class="col text-center p-3">{{demoUser.medicalInstitution}} Internes:</h3>
+    <div *ngFor="let user of demoList">
+      <div class="col-3">
+        {{user.name}}
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores voluptas maiores quibusdam. Autem voluptate non ipsa quas harum explicabo, molestiae veniam officiis nobis numquam, voluptatem ipsum sequi praesentium consequuntur culpa?
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,12 +1,22 @@
 
 <div class="row mx-1 ">
-  <div class="col-2 border justify-content-center text-center">
+  <div class="col-3 border justify-content-center text-center p-2">
     <img class="m-3" [src]="demoUser.img" alt="" style="width: 160px; height: 160px; border-radius: 100%;" >
     <h4 class="">{{demoUser.name}}</h4>
     <br>
     <p>{{demoUser.medicalInstitution}} hospital</p>
     <p>{{demoUser.residancyYear}} year {{demoUser.department}} intern</p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem corrupti libero natus modi consectetur, possimus, adipisci distinctio illum nam laborum voluptates aliquid laudantium eos quidem corporis! Odio sunt animi deserunt.
+    <div id="chart" class="m-0 col p-1">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [dataLabels]="chartOptions.dataLabels"
+        [grid]="chartOptions.grid"
+        [stroke]="chartOptions.stroke"
+        [title]="chartOptions.title"
+      ></apx-chart>
+    </div>
   </div>
   <div class="col-5 border">
     <div class="row" style="height: 100px;">
@@ -46,7 +56,7 @@
       </ng-template>
     </div>
   </div>
-  <div class="col-5 border">
+  <div class="col-4 border">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem corrupti libero natus modi consectetur, possimus, adipisci distinctio illum nam laborum voluptates aliquid laudantium eos quidem corporis! Odio sunt animi deserunt.
   </div>
 </div>

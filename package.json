@@ -23,6 +23,8 @@
     "apexcharts": "^3.26.3",
     "bootstrap": "^5.0.0",
     "bootstrap-icons": "^1.4.1",
+    "chart.js": "^3.3.2",
+    "ng-apexcharts": "^1.5.10",
     "ngx-webcam": "^0.3.2",
     "nodemon": "^2.0.7",
     "rxjs": "~6.6.0",
