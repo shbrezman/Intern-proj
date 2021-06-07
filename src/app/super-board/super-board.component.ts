@@ -1,5 +1,26 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexDataLabels,
+  ApexTitleSubtitle,
+  ApexStroke,
+  ApexGrid
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  dataLabels: ApexDataLabels;
+  grid: ApexGrid;
+  stroke: ApexStroke;
+  title: ApexTitleSubtitle;
+};
 
 @Component({
   selector: 'app-super-board',
@@ -8,6 +29,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperBoardComponent implements OnInit {
 
+  @ViewChild("chart") chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
 
   demoUser = {
     _id: '60b74b6a06514318c0847352',
@@ -47,7 +70,7 @@ export class SuperBoardComponent implements OnInit {
       residancyYear: 3,
       roleNumber: 100,
       roleType: 'inten',
-      tests: [
+      practices: [
         {
           _id: '60b74d5d06514318c0847369',
           title: 'practice1',
@@ -69,7 +92,7 @@ export class SuperBoardComponent implements OnInit {
         {
           _id: '60b74d5d06514318c084736c',
           title: 'practice4',
-          date: '2000-01-31T22:00:00.000Z',
+          date: '2000-05-31T22:00:00.000Z',
           score: null,
         },
         {
@@ -79,11 +102,11 @@ export class SuperBoardComponent implements OnInit {
           score: null,
         },
       ],
-      practices: [
+      tests: [
         { title: 'test1', date: '2000-01-02T22:00:00.000Z', score: 90 },
         { title: 'test2', date: '2000-02-02T22:00:00.000Z', score: 70 },
         { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 100 },
-        { title: 'test4', date: '2000-02-02T22:00:00.000Z', score: null },
+        { title: 'test4', date: '2000-03-02T22:00:00.000Z', score: null },
         { title: 'test5', date: null, score: null },
       ],
     },
@@ -115,7 +138,7 @@ export class SuperBoardComponent implements OnInit {
           _id: '60b74d5d06514318c084736a',
           title: 'practice2',
           date: '2000-01-31T22:00:00.000Z',
-          score: 100,
+          score: 90,
         },
         {
           _id: '60b74d5d06514318c084736b',
@@ -317,22 +340,93 @@ export class SuperBoardComponent implements OnInit {
     }
   ];
 
+
+
   internsAbove80 = 0;
   allScore = 0;
+  overallLastTestScore = [];
 
   constructor(public userService: UserService) {
-    this.demoList.forEach(element => {
+
+    for (let i = 0; i < this.demoList.length; i++) {
       var scoreCount = 0;
       var itaretionCount = 0;
-      element.tests.forEach(element => {
-        if(element.score){
-          scoreCount += element.score;
-          itaretionCount ++;
-        };
-      });
-      this.allScore += scoreCount / itaretionCount
+      this.demoList[i]['tsetsTaken'] = 0;
+      this.demoList[i]['lastScore'] = 0;
+      this.demoList[i]['lastTestDate'] = this.demoList[i].tests[0].date;
+        for (let j = 0; j < this.demoList[i].tests.length; j++){
+          if(this.demoList[i].tests[j].score){
+            scoreCount += this.demoList[i].tests[j].score;
+            itaretionCount ++;
+            this.demoList[i]['tsetsTaken'] ++;
+            if(this.demoList[i].tests[j].date > this.demoList[i]['lastTestDate']){
+              this.demoList[i]['lastTestDate'] = this.demoList[i].tests[j].date;
+              this.demoList[i]['lastScore'] = this.demoList[i].tests[j].score;
+            }
+          }
+        }
+      this.demoList[i]['internAverage'] = scoreCount / this.demoList[i]['tsetsTaken']
+      this.allScore += scoreCount / itaretionCount;
+      this.overallLastTestScore.push(this.demoList[i]['lastScore'])
       if (scoreCount / itaretionCount > 80) this.internsAbove80++
-    });
+    }
+    // this.demoList.forEach(element => {
+    //   var scoreCount = 0;
+    //   var itaretionCount = 0;
+
+    //   element.tests.forEach(element => {
+    //     if(element.score){
+    //       scoreCount += element.score;
+    //       itaretionCount ++;
+    //       element['aa']=20;
+    //     };
+    //   });
+    //   this.allScore += scoreCount / itaretionCount
+    //   if (scoreCount / itaretionCount > 80) this.internsAbove80++
+    // });
+
+    this.chartOptions = {
+      series: [
+        {
+          name: "score",
+          data: this.overallLastTestScore,
+          color: "#66ff66"
+        }
+      ],
+      chart: {
+        height: 320,
+        width: 1050,
+        type: "line",
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+    };
   }
 
   ngOnInit(): void {}
