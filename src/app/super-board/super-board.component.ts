@@ -105,7 +105,7 @@ export class SuperBoardComponent implements OnInit {
       tests: [
         { title: 'test1', date: '2000-01-02T22:00:00.000Z', score: 90 },
         { title: 'test2', date: '2000-02-02T22:00:00.000Z', score: 70 },
-        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 100 },
+        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 84 },
         { title: 'test4', date: '2000-03-02T22:00:00.000Z', score: null },
         { title: 'test5', date: null, score: null },
       ],
@@ -162,7 +162,7 @@ export class SuperBoardComponent implements OnInit {
       practices: [
         { title: 'test1', date: '2000-01-02T22:00:00.000Z', score: 90 },
         { title: 'test2', date: '2000-02-02T22:00:00.000Z', score: 70 },
-        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 100 },
+        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 92 },
         { title: 'test4', date: '2000-02-02T22:00:00.000Z', score: null },
         { title: 'test5', date: null, score: null },
       ],
@@ -195,7 +195,7 @@ export class SuperBoardComponent implements OnInit {
           _id: '60b74d5d06514318c084736a',
           title: 'practice2',
           date: '2000-01-31T22:00:00.000Z',
-          score: 100,
+          score: 94,
         },
         {
           _id: '60b74d5d06514318c084736b',
@@ -219,7 +219,7 @@ export class SuperBoardComponent implements OnInit {
       practices: [
         { title: 'test1', date: '2000-01-02T22:00:00.000Z', score: 90 },
         { title: 'test2', date: '2000-02-02T22:00:00.000Z', score: 70 },
-        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 100 },
+        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 78 },
         { title: 'test4', date: '2000-02-02T22:00:00.000Z', score: null },
         { title: 'test5', date: null, score: null },
       ],
@@ -252,7 +252,7 @@ export class SuperBoardComponent implements OnInit {
           _id: '60b74d5d06514318c084736a',
           title: 'practice2',
           date: '2000-01-31T22:00:00.000Z',
-          score: 100,
+          score: 99,
         },
         {
           _id: '60b74d5d06514318c084736b',
@@ -276,7 +276,7 @@ export class SuperBoardComponent implements OnInit {
       practices: [
         { title: 'test1', date: '2000-01-02T22:00:00.000Z', score: 90 },
         { title: 'test2', date: '2000-02-02T22:00:00.000Z', score: 70 },
-        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 100 },
+        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 86 },
         { title: 'test4', date: '2000-02-02T22:00:00.000Z', score: null },
         { title: 'test5', date: null, score: null },
       ],
@@ -309,7 +309,7 @@ export class SuperBoardComponent implements OnInit {
           _id: '60b74d5d06514318c084736a',
           title: 'practice2',
           date: '2000-01-31T22:00:00.000Z',
-          score: 100,
+          score: 90,
         },
         {
           _id: '60b74d5d06514318c084736b',
@@ -333,7 +333,7 @@ export class SuperBoardComponent implements OnInit {
       practices: [
         { title: 'test1', date: '2000-01-02T22:00:00.000Z', score: 90 },
         { title: 'test2', date: '2000-02-02T22:00:00.000Z', score: 70 },
-        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 100 },
+        { title: 'test3', date: '2000-02-02T22:00:00.000Z', score: 90 },
         { title: 'test4', date: '2000-02-02T22:00:00.000Z', score: null },
         { title: 'test5', date: null, score: null },
       ],
@@ -347,6 +347,8 @@ export class SuperBoardComponent implements OnInit {
   overallLastTestScore = [];
 
   constructor(public userService: UserService) {
+
+
 
     for (let i = 0; i < this.demoList.length; i++) {
       var scoreCount = 0;
@@ -393,14 +395,17 @@ export class SuperBoardComponent implements OnInit {
           color: "#66ff66"
         }
       ],
+
       chart: {
         height: 320,
         width: 1050,
-        type: "line",
+        type: "scatter",
         zoom: {
-          enabled: false
+          enabled: false,
+          type:'xy'
         }
       },
+
       dataLabels: {
         enabled: false
       },
@@ -426,6 +431,8 @@ export class SuperBoardComponent implements OnInit {
           ""
         ]
       },
+
+
     };
   }
 

@@ -1,56 +1,73 @@
-<p>Personal details</p>
-<h1>Please tell us about yourself, personally</h1>
-<h1></h1>
-<br>
-<!-- the first form -->
-<form *ngIf="screen" name="detailsForm" #detailsForm="ngForm">
-  <div class="row">
-    <div class="col">
-      <h4 style="color: grey;">Age</h4>
-      <input #a name="a" [(ngModel)]="userService.currentUser.age" type="number" class="form-control" placeholder="Age" required>
+<div class="d-flex justify-content-center">
+  <div>
 
-
-    </div>
-    <div class="col">
-      <h4 style="color: grey;">Country</h4>
-      <input name="b" [(ngModel)]="userService.currentUser.country" type="text" class="form-control" placeholder="Country" required>
-    </div>
-    <div class="col">
-      <h4 style="color: grey;">City</h4>
-      <input name="c" [(ngModel)]="userService.currentUser.city" type="text" class="form-control" placeholder="City" required>
-    </div>
+    <h3>Please type your personal details</h3>
+    <h1></h1>
+    <br>
   </div>
-  <br><br>
-  <div class="row">
-    <div class="col">
-      <h4 style="color: grey;">Graduation Year</h4>
-      <input name="d" [(ngModel)]="userService.currentUser.graduationYear" type="number" class="form-control" placeholder="Graduation Year" required>
-    </div>
-    <div class="col">
-      <h4 style="color: grey;">Instituation</h4>
-      <input name="e" [(ngModel)]="userService.currentUser.academicInstitution" type="text" class="form-control" placeholder="Instituation" required>
-    </div>
+</div>
+<div class="d-flex justify-content-center">
+  <!-- the first form -->
+  <form *ngIf="screen" name="detailsForm" #detailsForm="ngForm">
+    <div class="row">
+      <div class="col">
+        <h4 style="color: grey;">Age</h4>
+        <input #a name="a" [(ngModel)]="userService.currentUser.age" type="number" class="form-control"
+          placeholder="Age" required>
 
+
+      </div>
+      <div class="col">
+        <h4 style="color: grey;">Country</h4>
+        <input name="b" [(ngModel)]="userService.currentUser.country" type="text" class="form-control"
+          placeholder="Country" required>
+      </div>
+      <div class="col">
+        <h4 style="color: grey;">City</h4>
+        <input name="c" [(ngModel)]="userService.currentUser.city" type="text" class="form-control" placeholder="City"
+          required>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col">
+        <h4 style="color: grey;">Graduation Year</h4>
+        <input name="d" [(ngModel)]="userService.currentUser.graduationYear" type="number" class="form-control"
+          placeholder="Graduation Year" required>
+      </div>
+      <div class="col">
+        <h4 style="color: grey;">Instituation</h4>
+        <input name="e" [(ngModel)]="userService.currentUser.academicInstitution" type="text" class="form-control"
+          placeholder="Instituation" required>
+      </div>
+
+    </div>
+    <br>
+    <div class="text-center">
+    <button class="btn btn-dark btn-lg" (click)="next()" [disabled]='detailsForm.invalid' type="submit">NEXT</button>
   </div>
-  <br>
-  <button class="btn btn-dark btn-lg" (click)="next()" [disabled]='detailsForm.invalid' type="submit">NEXT</button>
-</form>
+  </form>
+</div>
+
 
 <!-- the second form -->
+<div class="d-flex justify-content-center">
 <form *ngIf="!screen" name="detailsForm2" #detailsForm2="ngForm">
   <div class="row">
-    <div class="col">
-      <h4 style="color: grey;">Medical Instatusion</h4>
+    <div class="col-5">
+      <h4 style="color: grey;" class="">Medical Instatusion</h4>
       <input name="f" [(ngModel)]="userService.currentUser.medicalInstitution" type="text" class="form-control"
         placeholder="Medical Instatusion" required>
     </div>
     <div class="col">
       <h4 style="color: grey;">Residancy</h4>
-      <input name="g" [(ngModel)]="userService.currentUser.residancy" type="text" class="form-control" placeholder="Residancy" required>
+      <input name="g" [(ngModel)]="userService.currentUser.residancy" type="text" class="form-control"
+        placeholder="Residancy" required>
     </div>
     <div class="col">
       <h4 style="color: grey;">Department</h4>
-      <input name="h" [(ngModel)]="userService.currentUser.department" type="text" class="form-control" placeholder="Department" required>
+      <input name="h" [(ngModel)]="userService.currentUser.department" type="text" class="form-control"
+        placeholder="Department" required>
     </div>
 
   </div>
@@ -58,19 +75,27 @@
   <div class="row">
     <div class="col-5">
       <h4 style="color: grey;">Year of residency</h4>
-      <input [(ngModel)]="userService.currentUser.residancyYear" type="number" name="vol" class="form-control" placeholder="Year of residency" required>
+      <input [(ngModel)]="userService.currentUser.residancyYear" type="number" name="vol" class="form-control"
+        placeholder="Year of residency" required>
     </div>
   </div>
   <br><br>
- <h5 *ngIf="error" style="color: red;">Error: user allredy exist, <a href="">Click here </a>for new registration</h5>
+  <h5 *ngIf="error" style="color: red;">Error: user allredy exist, <a href="">Click here </a>for new registration</h5>
+  <div class="text-center">
   <button class="btn btn-dark btn-lg" (click)="done()" [disabled]='detailsForm2.invalid'>DONE</button>
+</div>
 </form>
+</div>
 <br>
-<p>{{progressNumber}} % Completed</p>
-<div class="progress ">
+<div class="d-flex justify-content-center">
+  <div class="col-6">
+<p class="text-center">{{progressNumber}} % Completed</p>
+<div class="progress">
   <div *ngIf="screen" class="progress-bar bg-info " role="progressbar" style="width: 0%" aria-valuenow="50"
     aria-valuemin="0" aria-valuemax="100"></div>
   <div *ngIf="!screen" class=" progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
     aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+</div>
 </div>
 <br><br><br>
