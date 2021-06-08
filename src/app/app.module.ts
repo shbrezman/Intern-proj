@@ -16,8 +16,9 @@ import { EndOfRegComponent } from './regitration&login-components/end-of-reg/end
 import { UserBoardComponent } from './user-board/user-board.component';
 import { LoginAccesComponent } from './regitration&login-components/login-acces/login-acces.component';
 import { AaaComponent } from './aaa/aaa.component';
-import { SuperBoardComponent } from './super-board/super-board.component';
+import { SuperBoardComponent } from './supervisor-board/super-board.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { SuperadminBoardComponent } from './superadmin-board/superadmin-board.component';
 
 
 
@@ -38,6 +39,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     LoginAccesComponent,
     AaaComponent,
     SuperBoardComponent,
+    SuperadminBoardComponent,
 
 
 

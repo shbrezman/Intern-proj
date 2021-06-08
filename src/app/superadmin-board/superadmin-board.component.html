@@ -1,0 +1,98 @@
+<div class="row mx-1">
+
+  <div class="col-3 border justify-content-center text-center">
+
+    <img class="m-3" [src]="userService.currentSuperAdmin.img" alt="" style="width: 160px; height: 160px; border-radius: 100%;" >
+    <h1>{{userService.currentSuperAdmin.name}}</h1>
+
+    <h5 class="text-primary mb-4">A super admin</h5>
+
+      <h1 class="text-info display-3">{{userService.supervisors.length}}</h1>
+      <h5 class="mb-5">Active supervisors</h5>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Supervisor</button>
+
+
+
+  </div>
+  <div class="col-9 border justify-content-center">
+    <h3 class="col text-center p-3">SuperVisors List:</h3>
+
+
+    <div class="row mx-2 border-bottom text-center ">
+      <div class="col-2 py-3 pt-1 text-secondary">
+        <b>Name</b>
+      </div>
+      <div class="col-3 py-3 text-secondary">
+        <b>Interns responseabillity</b>
+      </div>
+      <div class="col-3 py-3 text-secondary">
+        <b>Medical Institution</b>
+      </div>
+
+
+
+    </div>
+    <div class="row m-2 border-bottom text-center" *ngFor="let supervisor of userService.supervisors; let i = index">
+      <div class="col-2 py-3">
+        <b>{{supervisor.name}}</b>
+      </div>
+      <div class="col-3 py-3">
+        <b>{{supervisor.name}}</b>
+      </div>
+      <div class="col-3 py-3">
+        <b>{{supervisor.medicalInstitution}}</b>
+      </div>
+      <div class="col-2"></div>
+
+      <div class="col-2">
+        <button class="btn btn-secondary m-2" (click)="supservisorClick(i)">View Profile</button>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+<!-- modal -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Creating a new supervisor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="supervisor-name" class="col-form-label">Supervisor name:</label>
+            <input #supervisorName type="text" class="form-control" id="supervisor-name">
+          </div>
+          <div class="form-group">
+            <label for="supervisor-phone-number" class="col-form-label">Supervisor phone number:</label>
+            <input #supervisorPhoneNumber type="text" class="form-control" id="supervisor-phone-number">
+          </div>
+          <div class="form-group">
+            <label for="supervisor-medical-institution" class="col-form-label">Supervisor medicalInstitution:</label>
+            <input #supervisorMedicalInstitution type="text" class="form-control" id="supervisor-medical-institution">
+          </div>
+          <div class="form-group">
+            <label for="recipient-id" class="col-form-label">Supervisor id:</label>
+            <input #supervisorId type="text" class="form-control" id="supervisor-id">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer text-center d-flex justify-content-center">
+        <button type="button" class="col-5 btn btn-primary" (click)="createSupervisor(supervisorName.value, supervisorPhoneNumber.value, supervisorId.value, supervisorMedicalInstitution.value)" data-dismiss="modal">Create</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+

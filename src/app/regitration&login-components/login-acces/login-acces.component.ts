@@ -48,24 +48,35 @@ export class LoginAccesComponent implements OnInit {
         this.userService
           .getUser(this.userService.currentUser.phoneNumber)
           .subscribe((user) => {
-            this.userService.currentUser = user as UserModel;
-            this.userService.IdentifiedUser = true;
-            if(this.userService.currentUser.roleNumber > 100 && this.userService.currentUser.roleNumber < 300)
+            if(user.roleNumber == 300)
             {
-              this.userService.getAllUsers(this.userService.currentUser.medicalInstitution, 100)
+              this.userService.currentSuperAdmin = user;
+              this.userService.getAllUsers(undefined, 200).subscribe(list =>{
+                this.userService.supervisors = list;
+                console.log(list)
+              }, err => console.log(err))
+              this.router.navigate(['/superadmin-board'])
+            }
+            if(user.roleNumber == 200)
+            {
+              this.userService.currentSuperVisor = user;
+              this.userService.getAllUsers(this.userService.currentSuperVisor.medicalInstitution, 100)
               .subscribe(list =>{
                 this.userService.users = list as UserModel[];
                 console.log(this.userService.users)
               },err => console.log(err))
-              this.router.navigate(['/super-board'])
+              this.router.navigate(['/supervisor-board'])
             }
-            else{
+            if(this.userService.currentUser.roleNumber == 100)
+            {
+              this.userService.currentUser = user;
               this.router.navigate(['/intern-board']);
             }
 
           },(err) =>{
             this.errMsg = 'this phone number not register, please try different number';
           });
+          this.userService.IdentifiedUser = true;
       } else {
         this.errMsg = 'The input password not matched, try again';
       }

@@ -41,7 +41,7 @@ export class FillingDetailsComponent implements OnInit {
     ];
 
 
-    this.userService.registerUser().subscribe(data =>{
+    this.userService.registerUser(this.userService.currentUser).subscribe(data =>{
       if(data){
         this.router.navigate(['/end-of-registration'])
       }

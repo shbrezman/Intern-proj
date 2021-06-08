@@ -14,25 +14,29 @@ export class UserService {
   IdentifiedUser = false;
   errorMsg = "";
 
-  users : UserModel[];
+
 
   currentUser = new UserModel;
+  currentSuperVisor = new UserModel;
+  currentSuperAdmin = new UserModel;
+  users : UserModel[];
+  supervisors : UserModel[];
 
 
 
   constructor(private http: HttpClient) { }
 
 
-  registerUser(): Observable<Object> {
-    return this.http.post(this.baseUrl + "api/users/create", this.currentUser);
+  registerUser(user: UserModel): Observable<Object> {
+    return this.http.post(this.baseUrl + "api/users/create", user);
   }
 
-  getUser<T>(phoneNumber: String): Observable<T> {
-    return this.http.get<T>(this.baseUrl + "api/users/getUser/" + phoneNumber)
+  getUser<T>(phoneNumber: String): Observable<UserModel> {
+    return this.http.get<UserModel>(this.baseUrl + "api/users/getUser/" + phoneNumber)
   }
 
-  getAllUsers<T>(medicalInstitution?: String, roleNumber?: number): Observable<T> {
-    return this.http.post<T>(this.baseUrl + "api/users/getAllUsers",
+  getAllUsers<T>(medicalInstitution?: String, roleNumber?: number): Observable<UserModel[]> {
+    return this.http.post<UserModel[]>(this.baseUrl + "api/users/getAllUsers",
     {medicalInstitution: medicalInstitution, roleNumber: roleNumber}
     )
   }
