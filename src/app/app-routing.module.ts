@@ -10,6 +10,7 @@ import { UserBoardComponent } from './user-board/user-board.component';
 import { SuperBoardComponent } from './supervisor-board/super-board.component';
 import { LoginAccesComponent } from './regitration&login-components/login-acces/login-acces.component';
 import { SuperadminBoardComponent } from './superadmin-board/superadmin-board.component';
+import { CreateTestComponent } from './create-test/create-test.component';
 
 const routes: Routes = [
   { path: '', component: LoginScreen1Component },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'login-acces', component:LoginAccesComponent},
   { path: 'supervisor-board', component:SuperBoardComponent},
   { path: 'superadmin-board', component:SuperadminBoardComponent},
+  { path: 'create-test', component:CreateTestComponent},
 
 
 ];

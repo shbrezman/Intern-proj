@@ -1,4 +1,3 @@
-import { WebcamImage } from "ngx-webcam";
 
 export class UserModel {
   name: string;

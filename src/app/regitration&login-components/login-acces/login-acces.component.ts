@@ -67,10 +67,10 @@ export class LoginAccesComponent implements OnInit {
               },err => console.log(err))
               this.router.navigate(['/supervisor-board'])
             }
-            if(this.userService.currentUser.roleNumber == 100)
+            if(user.roleNumber == 100)
             {
               this.userService.currentUser = user;
-              this.router.navigate(['/intern-board']);
+              this.router.navigate(['/user-board']);
             }
 
           },(err) =>{
