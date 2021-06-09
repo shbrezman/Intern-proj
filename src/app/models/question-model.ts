@@ -1,6 +1,6 @@
 export class questionModel{
   body: string;
-  answers: string[4];
+  answers: [string, string, string, string];
   rightAnswer: string;
-  correct: boolean
+  correct: boolean;
 }

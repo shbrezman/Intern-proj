@@ -71,19 +71,19 @@ export class UserBoardComponent implements OnInit {
     ]
   };
 
-  lastTest = this.demoUser.tests[0];
-  lastPractice = this.demoUser.practices[0];
+  lastTest = this.userService.currentUser.tests[0];
+  lastPractice = this.userService.currentUser.practices[0];
 
   constructor(public userService: UserService) {
 
-    this.demoUser.tests.find( test =>{
+    this.userService.currentUser.tests.find( test =>{
       this.testsResults.push(test.score);
       if(test.date > this.lastTest.date){
         this.lastTest= test;
       }
     })
 
-    this.demoUser.practices.find( practice =>{
+    this.userService.currentUser.practices.find( practice =>{
       this.practiceResults.push(practice.score);
       if(practice.date > this.lastPractice.date){
         this.lastPractice = practice;

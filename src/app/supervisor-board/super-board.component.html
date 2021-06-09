@@ -2,9 +2,9 @@
 
   <div class="col-3 border justify-content-center text-center">
 
-    <img class="m-3" [src]="demoUser.img" alt="" style="width: 130px; height: 130px; border-radius: 100%;" >
-    <h1>{{demoUser.name}}</h1>
-    <h4 class="py-1">{{demoUser.medicalInstitution}} Hospital</h4>
+    <img class="m-3" [src]="userService.currentSuperVisor.img" alt="" style="width: 130px; height: 130px; border-radius: 100%;" >
+    <h1>{{userService.currentSuperVisor.name}}</h1>
+    <h4 class="py-1">{{userService.currentSuperVisor.medicalInstitution}} Hospital</h4>
     <h5 class="text-primary mb-4">A supervosor</h5>
 
     <div class="row d-flex pb-3 border-bottom mx-4 justify-content-center">
@@ -12,13 +12,13 @@
       <button class="mx-2 btn btn-primary" [routerLink]="['/create-test']">Create practice</button>
     </div>
 
-      <h1 class="text-info display-4 mt-2">{{demoList.length}}</h1>
+      <h1 class="text-info display-4 mt-2">{{userService.users.length}}</h1>
       <h5 class="mb-2 pb-3 border-bottom mx-5">Active Interns</h5>
 
       <h1 class="text-warning display-4">{{internsAbove80}}</h1>
       <h5 class="mb-2 pb-3 border-bottom mx-5">Interns Archived > 80</h5>
 
-      <h1 class="text-success display-4">{{allScore / demoList.length | number : '1.1-1'}}</h1>
+      <h1 class="text-success display-4">{{allScore / userService.users.length | number : '1.1-1'}}</h1>
       <h5 class="mb-2 pb-3 border-bottom mx-5">Total Average</h5>
 
 
@@ -52,10 +52,8 @@
       <div class="col-2">
 
       </div>
-
-
     </div>
-    <div class="row m-2 border-bottom text-center" *ngFor="let user of demoList">
+    <div class="row m-2 border-bottom text-center" *ngFor="let user of userService.users; let i=index">
       <div class="col-2 py-3">
         <b>{{user.name}}</b>
       </div>
@@ -73,7 +71,7 @@
       </div>
 
       <div class="col-2">
-        <button class="btn btn-secondary m-2">View Profile</button>
+        <button class="btn btn-secondary m-2" (click)="internClick(i)">View Profile</button>
       </div>
 
 

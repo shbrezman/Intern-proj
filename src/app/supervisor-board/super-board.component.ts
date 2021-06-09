@@ -11,6 +11,7 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
+import { Router } from '@angular/router';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -32,25 +33,25 @@ export class SuperBoardComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  demoUser = {
-    _id: '60b74b6a06514318c0847352',
-    name: 'supervisor',
-    age: 31,
-    id: '4ads399aa8348',
-    passportNumber: '000000000',
-    phoneNumber: '888',
-    roleType: 'supervisor',
-    roleNumber: 200,
-    img: 'some data',
-    country: 'israel',
-    city: 'jerusalem',
-    academicInstitution: 'suroka',
-    graduationYear: 2000,
-    medicalInstitution: 'ziv',
-    residancy: 'ma ze',
-    department: 'heart',
-    residancyYear: 3,
-  };
+  // demoUser = {
+  //   _id: '60b74b6a06514318c0847352',
+  //   name: 'supervisor',
+  //   age: 31,
+  //   id: '4ads399aa8348',
+  //   passportNumber: '000000000',
+  //   phoneNumber: '888',
+  //   roleType: 'supervisor',
+  //   roleNumber: 200,
+  //   img: 'some data',
+  //   country: 'israel',
+  //   city: 'jerusalem',
+  //   academicInstitution: 'suroka',
+  //   graduationYear: 2000,
+  //   medicalInstitution: 'ziv',
+  //   residancy: 'ma ze',
+  //   department: 'heart',
+  //   residancyYear: 3,
+  // };
 
   demoList = [
     {
@@ -346,46 +347,33 @@ export class SuperBoardComponent implements OnInit {
   allScore = 0;
   overallLastTestScore = [];
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, private router: Router) {
+
+    console.log(userService.users);
 
 
-
-    for (let i = 0; i < this.demoList.length; i++) {
+    for (let i = 0; i < userService.users.length; i++) {
       var scoreCount = 0;
       var itaretionCount = 0;
-      this.demoList[i]['tsetsTaken'] = 0;
-      this.demoList[i]['lastScore'] = 0;
-      this.demoList[i]['lastTestDate'] = this.demoList[i].tests[0].date;
-        for (let j = 0; j < this.demoList[i].tests.length; j++){
-          if(this.demoList[i].tests[j].score){
-            scoreCount += this.demoList[i].tests[j].score;
+      this.userService.users[i]['tsetsTaken'] = 0;
+      this.userService.users[i]['lastScore'] = 0;
+      this.userService.users[i]['lastTestDate'] = this.userService.users[i].tests[0].date;
+        for (let j = 0; j < this.userService.users[i].tests.length; j++){
+          if(this.userService.users[i].tests[j].score){
+            scoreCount += this.userService.users[i].tests[j].score;
             itaretionCount ++;
-            this.demoList[i]['tsetsTaken'] ++;
-            if(this.demoList[i].tests[j].date > this.demoList[i]['lastTestDate']){
-              this.demoList[i]['lastTestDate'] = this.demoList[i].tests[j].date;
-              this.demoList[i]['lastScore'] = this.demoList[i].tests[j].score;
+            this.userService.users[i]['tsetsTaken'] ++;
+            if(this.userService.users[i].tests[j].date > this.userService.users[i]['lastTestDate']){
+              this.userService.users[i]['lastTestDate'] = this.userService.users[i].tests[j].date;
+              this.userService.users[i]['lastScore'] = this.userService.users[i].tests[j].score;
             }
           }
         }
-      this.demoList[i]['internAverage'] = scoreCount / this.demoList[i]['tsetsTaken']
+      this.userService.users[i]['internAverage'] = scoreCount / this.userService.users[i]['tsetsTaken']
       this.allScore += scoreCount / itaretionCount;
-      this.overallLastTestScore.push(this.demoList[i]['lastScore'])
+      this.overallLastTestScore.push(this.userService.users[i]['lastScore'])
       if (scoreCount / itaretionCount > 80) this.internsAbove80++
     }
-    // this.demoList.forEach(element => {
-    //   var scoreCount = 0;
-    //   var itaretionCount = 0;
-
-    //   element.tests.forEach(element => {
-    //     if(element.score){
-    //       scoreCount += element.score;
-    //       itaretionCount ++;
-    //       element['aa']=20;
-    //     };
-    //   });
-    //   this.allScore += scoreCount / itaretionCount
-    //   if (scoreCount / itaretionCount > 80) this.internsAbove80++
-    // });
 
     this.chartOptions = {
       series: [
@@ -434,6 +422,13 @@ export class SuperBoardComponent implements OnInit {
 
 
     };
+  }
+
+  internClick(index): void{
+    this.userService.currentUser = this.userService.users[index];
+    console.log(this.userService.currentUser);
+
+    this.router.navigate(['/user-board'])
   }
 
   ngOnInit(): void {}

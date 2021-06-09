@@ -64,8 +64,12 @@ export class LoginAccesComponent implements OnInit {
               .subscribe(list =>{
                 this.userService.users = list as UserModel[];
                 console.log(this.userService.users)
+
               },err => console.log(err))
-              this.router.navigate(['/supervisor-board'])
+              setTimeout(() => {
+                this.router.navigate(['/supervisor-board'])
+              }, 1000);
+
             }
             if(user.roleNumber == 100)
             {

@@ -1,10 +1,10 @@
 <div class="row mx-1">
   <div class="col-3 border justify-content-center text-center p-2">
-    <img class="m-3" [src]="demoUser.img" alt="" style="width: 130px; height: 130px; border-radius: 100%;">
-    <h4 class="">{{demoUser.name}}</h4>
+    <img class="m-3" [src]="userService.currentUser.img" alt="" style="width: 130px; height: 130px; border-radius: 100%;">
+    <h4 class="">{{userService.currentUser.name}}</h4>
 
-    <p>{{demoUser.medicalInstitution}} hospital</p>
-    <p>{{demoUser.residancyYear}} year {{demoUser.department}} intern</p>
+    <p>{{userService.currentUser.medicalInstitution}} hospital</p>
+    <p>{{userService.currentUser.residancyYear}} year {{userService.currentUser.department}} intern</p>
 
     <h5 class="mt-5">Your last test result:</h5>
     <h1 class="display-3" [ngClass]="{'text-success': lastTest.score > 89, 'text-warning': lastTest.score < 90}">
@@ -17,13 +17,13 @@
   </div>
   <div class="col-5 border ">
     <div class="row" style="height: 100px;">
-      <p class="col-6 mt-2 ml-2" style="font-size: 17px;"><b>YOUR PRACTICES & TESTS ({{demoUser.tests.length +
-          demoUser.practices.length}})</b></p>
+      <p class="col-6 mt-2 ml-2" style="font-size: 17px;"><b>YOUR PRACTICES & TESTS ({{userService.currentUser.tests.length +
+        userService.currentUser.practices.length}})</b></p>
       <p class="col mt-2" style="margin-left: 120px; font-size: 17px;">See results</p>
     </div>
 
     <div class="row border-bottom border-top text-center d-flex align-items-center mx-3 " style="height: 70px"
-      *ngFor="let item of demoUser.tests">
+      *ngFor="let item of userService.currentUser.tests">
       <p class="col-2 my-auto" style="font-size: 19px">{{item.title}}</p>
       <ng-container *ngIf="item.score; else elseTemplate">
         <div class="col-6"></div>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row border-bottom border-top text-center d-flex align-items-center mx-3" style="height: 70px"
-      *ngFor="let item of demoUser.practices">
+      *ngFor="let item of userService.currentUser.practices">
       <p class="col-2 my-auto" style="font-size: 19px">{{item.title}}</p>
       <ng-container *ngIf="item.score; else elseTemplate">
         <div class="col-6"></div>
@@ -56,12 +56,12 @@
   </div>
   <div class="col-4 border">
     <div id="chart" class="m-0 col mt-3 justify-content-center text-center">
-      <p class="display-5" style="font-size: 22px;">{{userService.currentUser.name || demoUser.name}} tests grid:</p>
+      <p class="display-5" style="font-size: 22px;">{{userService.currentUser.name}} tests grid:</p>
       <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
         [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"></apx-chart>
     </div>
     <div id="chart2" class="m-0 col mt-3 justify-content-center text-center">
-      <p class="display-5" style="font-size: 22px;">{{demoUser.name}} practices grid:</p>
+      <p class="display-5" style="font-size: 22px;">{{userService.currentUser.name}} practices grid:</p>
       <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart" [xaxis]="chartOptions2.xaxis"
         [dataLabels]="chartOptions2.dataLabels" [grid]="chartOptions2.grid" [stroke]="chartOptions2.stroke"></apx-chart>
     </div>
