@@ -37,7 +37,16 @@ export class CreateTestComponent implements OnInit {
   }
   create(){
     console.log(this.testService.test);
-    
+    for (let i = 0; i < this.userService.users.length; i++) {
+      this.userService.users[i].tests = [...this.userService.users[i].tests, this.testService.test]
+      this.userService.updateUser(this.userService.users[i].id, this.userService.users[i].tests).subscribe(data =>{
+        if(data){
+          console.log(data)
+        }
+      },err =>{console.log(err);} )
+
+    }
+
     this.router.navigate(['/supervisor-board'])
 
 

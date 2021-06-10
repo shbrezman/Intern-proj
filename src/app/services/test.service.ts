@@ -9,7 +9,9 @@ export class TestService {
 
   test = new testModel;
 
+  currentTest = new testModel;
+
   constructor() {
-    
+
    }
 }

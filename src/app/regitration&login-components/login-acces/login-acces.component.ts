@@ -68,7 +68,7 @@ export class LoginAccesComponent implements OnInit {
               },err => console.log(err))
               setTimeout(() => {
                 this.router.navigate(['/supervisor-board'])
-              }, 1000);
+              }, 500);
 
             }
             if(user.roleNumber == 100)

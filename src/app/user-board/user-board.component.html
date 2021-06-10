@@ -23,18 +23,18 @@
     </div>
 
     <div class="row border-bottom border-top text-center d-flex align-items-center mx-3 " style="height: 70px"
-      *ngFor="let item of userService.currentUser.tests">
+      *ngFor="let item of userService.currentUser.tests; let i=index">
       <p class="col-2 my-auto" style="font-size: 19px">{{item.title}}</p>
       <ng-container *ngIf="item.score; else elseTemplate">
         <div class="col-6"></div>
         <span class="col-1 mx-auto text-center d-flex align-items-center"
           style="font-size: 19px; border-radius: 100%;  width: 50px; height: 50px;"
           [ngStyle]="{'background-color' : item.score > 89 ? '#ccffb3' : '#ffeb99'}">{{item.score}}</span>
-        <button class="btn btn-secondary col-2 px-0 py-1">See Result</button>
+        <button class="btn btn-secondary col-2 px-0 py-1" (click)="showExam(i)">See Result</button>
       </ng-container>
       <ng-template #elseTemplate>
         <div class="col-8"></div>
-        <button class="btn btn-primary col-2 px-0 py-1">Start</button>
+        <button class="btn btn-primary col-2 px-0 py-1" (click)="showExam(i)">Start</button>
       </ng-template>
     </div>
 
@@ -46,11 +46,11 @@
         <span class="col-1 mx-auto text-center d-flex align-items-center"
           style="font-size: 19px; border-radius: 50%;  width: 50px; height: 50px;"
           [ngStyle]="{'background-color' : item.score > 89 ? '#ccffb3' : '#ffeb99'}">{{item.score}}</span>
-        <button class="btn btn-secondary col-2 px-0 py-1">See Result</button>
+        <button class="btn btn-secondary col-2 px-0 py-1" (click)="showPractice(i)">See Result</button>
       </ng-container>
       <ng-template #elseTemplate>
         <div class="col-8"></div>
-        <button class="btn btn-primary col-2 px-0 py-1">Start</button>
+        <button class="btn btn-primary col-2 px-0 py-1" (click)="showPractice(i)">Start</button>
       </ng-template>
     </div>
   </div>

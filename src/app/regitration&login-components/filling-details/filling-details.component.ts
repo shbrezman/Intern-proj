@@ -3,6 +3,8 @@ import { HttpResponse } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { testModel } from 'src/app/models/test-model';
+import { questionModel } from 'src/app/models/question-model';
 
 @Component({
   selector: 'app-filling-details',
@@ -25,19 +27,19 @@ export class FillingDetailsComponent implements OnInit {
   }
   done(): void{
     this.userService.currentUser.practices = [
-      {title: 'Practice1', date: null, score: null },
-      {title: 'Practice2', date: null, score: null },
-      {title: 'Practice3', date: null, score: null },
-      {title: 'Practice4', date: null, score: null },
-      {title: 'Practice5', date: null, score: null },
+      new testModel,
+      new testModel,
+      new testModel,
+      new testModel,
+      new testModel,
     ];
 
     this.userService.currentUser.tests = [
-      {title: 'Test1', date: null, score: null },
-      {title: 'Test2', date: null, score: null },
-      {title: 'Test3', date: null, score: null },
-      {title: 'Test4', date: null, score: null },
-      {title: 'Test5', date: null, score: null },
+      new testModel,
+      new testModel,
+      new testModel,
+      new testModel,
+      new testModel,
     ];
 
 

@@ -1,3 +1,4 @@
+import { testModel } from './../models/test-model';
 import { catchError } from 'rxjs/operators';
 import { UserModel } from './../models/user-model';
 import { Injectable } from '@angular/core';
@@ -53,9 +54,14 @@ export class UserService {
     );
   }
 
-  update(idArr): Observable<any> {
-    return this.http.post(this.baseUrl + "api/users/updateUsers", {idArr})
+  updateUsers(idArr): Observable<any> {
+    return this.http.put(this.baseUrl + "api/users/updateUsers", {idArr})
   }
+
+  updateUser(id: string, tests): Observable<any> {
+    return this.http.put(this.baseUrl + "api/users/updateUser", {id: id, tests: tests})
+  }
+
 
 
 }

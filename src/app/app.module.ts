@@ -20,6 +20,7 @@ import { SuperBoardComponent } from './supervisor-board/super-board.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SuperadminBoardComponent } from './superadmin-board/superadmin-board.component';
 import { CreateTestComponent } from './create-test/create-test.component';
+import { ExamPageComponent } from './exam-page/exam-page.component';
 
 
 
@@ -42,6 +43,7 @@ import { CreateTestComponent } from './create-test/create-test.component';
     SuperBoardComponent,
     SuperadminBoardComponent,
     CreateTestComponent,
+    ExamPageComponent,
 
 
 

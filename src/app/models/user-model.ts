@@ -1,3 +1,4 @@
+import { testModel } from './test-model';
 
 export class UserModel {
   name: string;
@@ -17,6 +18,6 @@ export class UserModel {
   residancy: string;
   department: string;
   residancyYear: number;
-  practices: {date: Date, title: string, score: number}[];
-  tests: {date: Date, title: string, score: number}[];
+  practices: testModel[];
+  tests: testModel[];
 }

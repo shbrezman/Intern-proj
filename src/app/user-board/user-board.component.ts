@@ -1,3 +1,4 @@
+import { TestService } from './../services/test.service';
 import { UserModel } from '../models/user-model';
 import { UserService } from '../services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -12,6 +13,7 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
+import { Router } from '@angular/router';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -39,42 +41,10 @@ export class UserBoardComponent implements OnInit {
   practiceResults = [];
   testsResults = [];
 
-
-  demoUser = {
-    name: 'shlomi brezman123',
-    age: 31,
-    id: '4ads399aa8348',
-    passportNumber: '000000000',
-    phoneNumber: '111',
-    img: "mbdsvkjb",
-    country: 'israel',
-    city: 'jerusalem',
-    academicInstitution: 'suroka',
-    graduationYear: 2000,
-    medicalInstitution: 'ziv',
-    residancy: 'ma ze',
-    department: 'heart',
-    residancyYear: 3,
-    practices: [
-      { title: 'practice1', date: new Date(2020,3,6), score: 88 },
-      { title: 'practice2', date: new Date(2020,4,8), score: 97 },
-      { title: 'practice3', date: new Date(2020,6,12), score: 92 },
-      { title: 'practice4', date: null, score: null },
-      { title: 'practice5', date: null, score: null },
-    ],
-    tests: [
-      { title: 'test1', date: new Date(2020,8,6), score: 90 },
-      { title: 'test2', date: new Date(2020,10,8), score: 95 },
-      { title: 'test3', date: new Date(2020,10,10), score: 89 },
-      { title: 'test4', date: null, score: null },
-      { title: 'test5', date: null, score: null },
-    ]
-  };
-
   lastTest = this.userService.currentUser.tests[0];
   lastPractice = this.userService.currentUser.practices[0];
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, private testService: TestService, private router: Router) {
 
     this.userService.currentUser.tests.find( test =>{
       this.testsResults.push(test.score);
@@ -176,6 +146,16 @@ export class UserBoardComponent implements OnInit {
       }
     };
 
+  }
+
+  showExam(index): void{
+    this.testService.currentTest = this.userService.currentUser.tests[index];
+    this.router.navigate(['/exam-page'])
+  }
+
+  showPractice(index): void{
+    this.testService.currentTest = this.userService.currentUser.practices[index];
+    this.router.navigate(['/exam-page'])
   }
 
   ngOnInit(): void {
