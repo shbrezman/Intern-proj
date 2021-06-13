@@ -8,10 +8,13 @@ import { Injectable } from '@angular/core';
 export class TestService {
 
   test = new testModel;
-
+  currentTestIndex = null;
   currentTest = new testModel;
 
+
   constructor() {
+
+
 
    }
 }

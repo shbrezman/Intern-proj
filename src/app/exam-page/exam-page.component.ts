@@ -12,7 +12,7 @@ export class ExamPageComponent implements OnInit {
 
   charNum = 65;
   test;
-  testSent = false;
+
 
   constructor(public userService: UserService, public testService: TestService, private router: Router) {
 
@@ -30,19 +30,26 @@ export class ExamPageComponent implements OnInit {
   }
 
   clic(value, qIndex){
-    this.test.questions[qIndex].examineeAnswer = String.fromCharCode(value);
-    this.test.questions[qIndex].correct = this.test.questions[qIndex].examineeAnswer == this.test.questions[qIndex].rightAnswer
+    this.testService.currentTest.questions[qIndex].examineeAnswer = String.fromCharCode(value);
+    this.testService.currentTest.questions[qIndex].correct = this.testService.currentTest.questions[qIndex].examineeAnswer == this.testService.currentTest.questions[qIndex].rightAnswer
   }
 
   sendTest(){
-    this.testSent = true;
-    this.test.score = 0;
-    this.test.questions.forEach(element => {
-      if(element.correct) this.test.score += 10;
-    });
-    console.log(this.test.score);
 
+    this.testService.currentTest.score = 0;
+    this.testService.currentTest.questions.forEach(element => {
+      if(element.correct) this.testService.currentTest.score += 10;
+    });
+    console.log(this.testService.currentTest.score);
+
+    this.userService.currentUser.tests[this.testService.currentTestIndex] = this.testService.currentTest;
+    this.userService.updateUser(this.userService.currentUser.id, this.userService.currentUser.tests).subscribe(data =>{
+      if(data){
+        console.log(data)
+      }
+    },err =>{console.log(err);});
   }
+
 
   ngOnInit(): void {
   }

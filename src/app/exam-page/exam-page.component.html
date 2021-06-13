@@ -3,9 +3,9 @@
   <div class="col-8">
     <h3 class="pb-5 border-bottom">Hello {{userService.currentUser.name}}</h3>
     <form>
-      <div class="question mb-3 border-bottom" *ngFor="let q of test.questions; let i=index">
+      <div class="question mb-3 border-bottom" *ngFor="let q of testService.currentTest.questions; let i=index">
         <div class="row body">
-          <h1 class="lead mx-4"><b>Question {{i + 1}}: {{test.questions[i].body}}</b></h1>
+          <h1 class="lead mx-4"><b>Question {{i + 1}}: {{testService.currentTest.questions[i].body}}</b></h1>
         </div>
         <div class="answers row pb-2">
           <div class="col-1"></div>
@@ -13,29 +13,29 @@
             <fieldset>
           <div class="row">
             <input #answer1 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 0}}"
-              id="answer1" (click)="clic(answer1.value, i)" [disabled]="testSent">
-            <label class="form-check-label" for="answer1">{{test.questions[i].answers[0]}}</label>
+              id="answer1" (click)="clic(answer1.value, i)" [disabled]="testService.currentTest.score">
+            <label class="form-check-label" for="answer1">{{testService.currentTest.questions[i].answers[0]}}</label>
           </div>
 
           <div class="row">
             <input #answer2 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 1}}"
-              id="answer2" (click)="clic(answer2.value, i)" [disabled]="testSent">
-            <label class="form-check-label" for="answer1">{{test.questions[i].answers[1]}}</label>
+              id="answer2" (click)="clic(answer2.value, i)" [disabled]="testService.currentTest.score">
+            <label class="form-check-label" for="answer1">{{testService.currentTest.questions[i].answers[1]}}</label>
           </div>
           <div class="row">
             <input #answer3 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 2}}"
-              id="answer3" (click)="clic(answer3.value, i)" [disabled]="testSent">
-            <label class="form-check-label" for="answer3">{{test.questions[i].answers[2]}}</label>
+              id="answer3" (click)="clic(answer3.value, i)" [disabled]="testService.currentTest.score">
+            <label class="form-check-label" for="answer3">{{testService.currentTest.questions[i].answers[2]}}</label>
           </div>
           <div class="row">
             <input #answer4 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 3}}"
-              id="answer4" (click)="clic(answer4.value, i)" [disabled]="testSent">
-            <label class="form-check-label" for="answer4">{{test.questions[i].answers[3]}}</label>
+              id="answer4" (click)="clic(answer4.value, i)" [disabled]="testService.currentTest.score">
+            <label class="form-check-label" for="answer4">{{testService.currentTest.questions[i].answers[3]}}</label>
           </div>
         </fieldset>
         </div>
-        <div class="col-1" *ngIf="testSent">
-            <ng-container *ngIf="test.questions[i].correct; else elseTemplate">
+        <div class="col-1" *ngIf="testService.currentTest.score">
+            <ng-container *ngIf="testService.currentTest.questions[i].correct; else elseTemplate">
               <h1 class="display-3 text-success">✓</h1>
             </ng-container>
             <ng-template #elseTemplate>
@@ -49,11 +49,11 @@
 
       </div>
     </form>
-    <p class="display-4 text-center mb-4" *ngIf="testSent">Your score is: {{test.score}}</p>
+    <p class="display-4 text-center mb-4" *ngIf="testService.currentTest.score">Your score is: {{testService.currentTest.score}}</p>
     <div class="d-flex justify-content-center">
 
-      <button class="mx-2 btn btn-primary btn-lg mb-lg-5" (click)="sendTest()" [disabled] = "testSent">Send Examination</button>
-      <button class="mx-2 btn btn-secondary btn-lg mb-lg-5" *ngIf="testSent" [routerLink]="['/user-board']" routerLinkActive="router-link-active" >Bact To Board</button>
+      <button class="mx-2 btn btn-primary btn-lg mb-lg-5" (click)="sendTest()" [disabled] = "testService.currentTest.score">Send Examination</button>
+      <button class="mx-2 btn btn-secondary btn-lg mb-lg-5" *ngIf="testService.currentTest.score" [routerLink]="['/user-board']" routerLinkActive="router-link-active" >Bact To Board</button>
     </div>
   </div>
 

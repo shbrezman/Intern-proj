@@ -12,33 +12,33 @@
     <div class="row">
       <div class="col">
         <h4 style="color: grey;">Age</h4>
-        <input #a name="a" [(ngModel)]="userService.currentUser.age" type="number" class="form-control"
-          placeholder="Age" required>
+        <input #a name="a" [(ngModel)]="userService.currentUser.age" type="text" class="form-control"
+          placeholder="Age" required pattern="[0-9]{1,3}">
 
 
       </div>
       <div class="col">
         <h4 style="color: grey;">Country</h4>
         <input name="b" [(ngModel)]="userService.currentUser.country" type="text" class="form-control"
-          placeholder="Country" required>
+          placeholder="Country" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,3}$">
       </div>
       <div class="col">
         <h4 style="color: grey;">City</h4>
         <input name="c" [(ngModel)]="userService.currentUser.city" type="text" class="form-control" placeholder="City"
-          required>
+          required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,3}$">
       </div>
     </div>
     <br><br>
     <div class="row">
       <div class="col">
         <h4 style="color: grey;">Graduation Year</h4>
-        <input name="d" [(ngModel)]="userService.currentUser.graduationYear" type="number" class="form-control"
-          placeholder="Graduation Year" required>
+        <input name="d" [(ngModel)]="userService.currentUser.graduationYear" type="text" class="form-control"
+          placeholder="Graduation Year" required pattern="^[0-9]{4}$">
       </div>
       <div class="col">
         <h4 style="color: grey;">Instituation</h4>
         <input name="e" [(ngModel)]="userService.currentUser.academicInstitution" type="text" class="form-control"
-          placeholder="Instituation" required>
+          placeholder="Instituation" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,6}$">
       </div>
 
     </div>
@@ -57,17 +57,17 @@
     <div class="col-5">
       <h4 style="color: grey;" class="">Medical Instatusion</h4>
       <input name="f" [(ngModel)]="userService.currentUser.medicalInstitution" type="text" class="form-control"
-        placeholder="Medical Instatusion" required>
+        placeholder="Medical Instatusion" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,6}$">
     </div>
     <div class="col">
       <h4 style="color: grey;">Residancy</h4>
       <input name="g" [(ngModel)]="userService.currentUser.residancy" type="text" class="form-control"
-        placeholder="Residancy" required>
+        placeholder="Residancy" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,3}$">
     </div>
     <div class="col">
       <h4 style="color: grey;">Department</h4>
       <input name="h" [(ngModel)]="userService.currentUser.department" type="text" class="form-control"
-        placeholder="Department" required>
+        placeholder="Department" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,3}$">
     </div>
 
   </div>
@@ -75,8 +75,8 @@
   <div class="row">
     <div class="col-5">
       <h4 style="color: grey;">Year of residency</h4>
-      <input [(ngModel)]="userService.currentUser.residancyYear" type="number" name="vol" class="form-control"
-        placeholder="Year of residency" required>
+      <input [(ngModel)]="userService.currentUser.residancyYear" type="text" name="vol" class="form-control"
+        placeholder="Year of residency" required pattern="[0-9]{1}">
     </div>
   </div>
   <br><br>
