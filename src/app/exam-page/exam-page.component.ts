@@ -30,7 +30,12 @@ export class ExamPageComponent implements OnInit {
   }
 
   clic(value, qIndex){
-    this.testService.currentTest.questions[qIndex].examineeAnswer = String.fromCharCode(value);
+
+    this.testService.currentTest.questions[qIndex].examineeAnswer = String.fromCharCode(65 + parseInt(value));
+    console.log(this.testService.currentTest.questions[qIndex].examineeAnswer);
+
+
+
     this.testService.currentTest.questions[qIndex].correct = this.testService.currentTest.questions[qIndex].examineeAnswer == this.testService.currentTest.questions[qIndex].rightAnswer
   }
 

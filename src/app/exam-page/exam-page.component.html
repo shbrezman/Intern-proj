@@ -5,31 +5,35 @@
     <form>
       <div class="question mb-3 border-bottom" *ngFor="let q of testService.currentTest.questions; let i=index">
         <div class="row body">
-          <h1 class="lead mx-4"><b>Question {{i + 1}}: {{testService.currentTest.questions[i].body}}</b></h1>
+          <h1 class="lead mx-4"><b>Question {{i + 1}}:</b> {{testService.currentTest.questions[i].body}}</h1>
         </div>
         <div class="answers row pb-2">
           <div class="col-1"></div>
           <div class="col-9">
             <fieldset>
           <div class="row">
-            <input #answer1 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 0}}"
-              id="answer1" (click)="clic(answer1.value, i)" [disabled]="testService.currentTest.score">
+            <input #answer1 class="form-check-input" name="question{{i}}" type="radio" value="0"
+              id="answer1" (click)="clic(answer1.value, i)" [disabled]="testService.currentTest.score"
+               [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'A'">
             <label class="form-check-label" for="answer1">{{testService.currentTest.questions[i].answers[0]}}</label>
           </div>
 
           <div class="row">
-            <input #answer2 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 1}}"
-              id="answer2" (click)="clic(answer2.value, i)" [disabled]="testService.currentTest.score">
+            <input #answer2 class="form-check-input" name="question{{i}}" type="radio" value="1"
+              id="answer2" (click)="clic(answer2.value, i)" [disabled]="testService.currentTest.score"
+              [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'B'">
             <label class="form-check-label" for="answer1">{{testService.currentTest.questions[i].answers[1]}}</label>
           </div>
           <div class="row">
-            <input #answer3 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 2}}"
-              id="answer3" (click)="clic(answer3.value, i)" [disabled]="testService.currentTest.score">
+            <input #answer3 class="form-check-input" name="question{{i}}" type="radio" value="2"
+              id="answer3" (click)="clic(answer3.value, i)" [disabled]="testService.currentTest.score"
+              [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'C'">
             <label class="form-check-label" for="answer3">{{testService.currentTest.questions[i].answers[2]}}</label>
           </div>
           <div class="row">
-            <input #answer4 class="form-check-input" name="question{{i}}" type="radio" value="{{charNum + 3}}"
-              id="answer4" (click)="clic(answer4.value, i)" [disabled]="testService.currentTest.score">
+            <input #answer4 class="form-check-input" name="question{{i}}" type="radio" value="3"
+              id="answer4" (click)="clic(answer4.value, i)" [disabled]="testService.currentTest.score"
+              [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'D'">
             <label class="form-check-label" for="answer4">{{testService.currentTest.questions[i].answers[3]}}</label>
           </div>
         </fieldset>
