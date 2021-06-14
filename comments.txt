@@ -4,3 +4,5 @@
 4. use local storage.
 5. add token
 6. show the right and wrong answers in "see result"
+7. change/fix charts
+8. add google face recignition

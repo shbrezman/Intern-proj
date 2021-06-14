@@ -24,33 +24,35 @@
 
     <div class="row border-bottom border-top text-center d-flex align-items-center mx-3 " style="height: 70px"
       *ngFor="let item of userService.currentUser.tests; let i=index">
-      <p class="col-2 my-auto" style="font-size: 19px">{{item.title}}</p>
+      <p class="col-3 my-auto" style="font-size: 19px">{{item.title}}</p>
       <ng-container *ngIf="item.score; else elseTemplate">
-        <div class="col-6"></div>
+        <div class="col-5"></div>
         <span class="col-1 mx-auto text-center d-flex align-items-center"
           style="font-size: 19px; border-radius: 100%;  width: 50px; height: 50px;"
           [ngStyle]="{'background-color' : item.score > 89 ? '#ccffb3' : '#ffeb99'}">{{item.score}}</span>
         <button class="btn btn-secondary col-2 px-0 py-1" (click)="showExam(i)">See Result</button>
       </ng-container>
       <ng-template #elseTemplate>
-        <div class="col-8"></div>
-        <button class="btn btn-primary col-2 px-0 py-1" (click)="showExam(i)">Start</button>
+        <div class="col-7"></div>
+        <button class="btn btn-primary col-2 px-0 py-1" (click)="showExam(i)"
+        [disabled]="testService.userRoll > 100">Start</button>
       </ng-template>
     </div>
 
     <div class="row border-bottom border-top text-center d-flex align-items-center mx-3" style="height: 70px"
       *ngFor="let item of userService.currentUser.practices; let i=index">
-      <p class="col-2 my-auto" style="font-size: 19px">{{item.title}}</p>
+      <p class="col-3 my-auto" style="font-size: 19px">{{item.title}}</p>
       <ng-container *ngIf="item.score; else elseTemplate">
-        <div class="col-6"></div>
+        <div class="col-5"></div>
         <span class="col-1 mx-auto text-center d-flex align-items-center"
           style="font-size: 19px; border-radius: 50%;  width: 50px; height: 50px;"
           [ngStyle]="{'background-color' : item.score > 89 ? '#ccffb3' : '#ffeb99'}">{{item.score}}</span>
         <button class="btn btn-secondary col-2 px-0 py-1" (click)="showPractice(i)">See Result</button>
       </ng-container>
       <ng-template #elseTemplate>
-        <div class="col-8"></div>
-        <button class="btn btn-primary col-2 px-0 py-1" (click)="showPractice(i)">Start</button>
+        <div class="col-7"></div>
+        <button class="btn btn-primary col-2 px-0 py-1" (click)="showPractice(i)"
+        [disabled]="testService.userRoll > 100">Start</button>
       </ng-template>
     </div>
   </div>
@@ -58,12 +60,14 @@
     <div id="chart" class="m-0 col mt-3 justify-content-center text-center">
       <p class="display-5" style="font-size: 22px;">{{userService.currentUser.name}} tests grid:</p>
       <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-        [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"></apx-chart>
+        [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
+        [yaxis]="chartOptions.yaxis"></apx-chart>
     </div>
     <div id="chart2" class="m-0 col mt-3 justify-content-center text-center">
       <p class="display-5" style="font-size: 22px;">{{userService.currentUser.name}} practices grid:</p>
       <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart" [xaxis]="chartOptions2.xaxis"
-        [dataLabels]="chartOptions2.dataLabels" [grid]="chartOptions2.grid" [stroke]="chartOptions2.stroke"></apx-chart>
+        [dataLabels]="chartOptions2.dataLabels" [grid]="chartOptions2.grid" [stroke]="chartOptions2.stroke"
+        [yaxis]="chartOptions2.yaxis"></apx-chart>
     </div>
 
   </div>

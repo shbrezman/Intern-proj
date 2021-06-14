@@ -10,6 +10,8 @@ export class TestService {
   test = new testModel;
   currentTestIndex = null;
   currentTest = new testModel;
+  userRoll = null;
+  CreationType = null
 
 
   constructor() {

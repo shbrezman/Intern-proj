@@ -1,3 +1,4 @@
+import { TestService } from './../../services/test.service';
 import { Router } from '@angular/router';
 import { UserModel } from '../../models/user-model';
 import { UserService } from '../../services/user.service';
@@ -12,8 +13,12 @@ export class LoginAccesComponent implements OnInit {
   count: number;
   password: string;
   errMsg: string;
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService,private testService: TestService, private router: Router) {
     this.count = 0;
+    this.userService.currentUser = new UserModel;
+    this.userService.currentSuperVisor = new UserModel;
+    this.userService.currentSuperAdmin = new UserModel;
+    this.userService.IdentifiedUser = false;
   }
 
   ngOnInit(): void {}
@@ -50,6 +55,7 @@ export class LoginAccesComponent implements OnInit {
           .subscribe((user) => {
             if(user.roleNumber == 300)
             {
+              this.testService.userRoll = 300;
               this.userService.currentSuperAdmin = user;
               this.userService.getAllUsers(undefined, 200).subscribe(list =>{
                 this.userService.supervisors = list;
@@ -59,6 +65,7 @@ export class LoginAccesComponent implements OnInit {
             }
             if(user.roleNumber == 200)
             {
+              this.testService.userRoll = 200;
               this.userService.currentSuperVisor = user;
               this.userService.getAllUsers(this.userService.currentSuperVisor.medicalInstitution, 100)
               .subscribe(list =>{

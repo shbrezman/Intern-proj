@@ -1,9 +1,17 @@
 
 <a href=""><h1 style="margin-left: 20px; position: absolute; color: rgb(90, 150, 240); ">Medica<span style="font-size: 50px;">&#9764;</span>Test</h1></a>
 <p *ngIf="!userService.IdentifiedUser" style="margin-left: 83%; margin-top: 10px;">Alredy have an account? <a [routerLink]="['/login-acces']"><b>Log in</b></a></p>
-<p *ngIf="userService.IdentifiedUser" style="margin-left: 84%; margin-top: 10px; font-size: 20px;">
-  <img class="mx-2" *ngIf="userService.IdentifiedUser" style="width: 60px; height: 60px; border-radius: 100%;" [src]="userService.currentUser.img" alt="">
-  <b>{{userService.currentUser.name}}</b></p>
+
+<div *ngIf="userService.IdentifiedUser">
+  <p  style="margin-left: 84%; margin-top: 10px; font-size: 20px;">
+    <img *ngIf="testService.userRoll == 100" class="mx-2" style="width: 60px; height: 60px; border-radius: 100%;" [src]="userService.currentUser.img" alt="">
+    <img *ngIf="testService.userRoll == 200" class="mx-2" style="width: 60px; height: 60px; border-radius: 100%;" [src]="userService.currentSuperVisor.img" alt="">
+    <img *ngIf="testService.userRoll == 300" class="mx-2" style="width: 60px; height: 60px; border-radius: 100%;" [src]="userService.currentSuperAdmin.img" alt="">
+    <b *ngIf="testService.userRoll == 100" >{{userService.currentUser.name}}</b>
+    <b *ngIf="testService.userRoll == 200" >{{userService.currentSuperVisor.name}}</b>
+    <b *ngIf="testService.userRoll == 300" >{{userService.currentSuperAdmin.name}}</b>
+  </p>
+</div>
 
  <br>
  <br>

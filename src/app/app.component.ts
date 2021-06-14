@@ -1,3 +1,4 @@
+import { TestService } from './services/test.service';
 import { UserService } from './services/user.service';
 import { Component } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'intern';
-  constructor(public userService: UserService){
+  constructor(public userService: UserService, public testService: TestService){
 
   }
 }

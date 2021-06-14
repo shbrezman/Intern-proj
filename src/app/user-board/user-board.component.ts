@@ -8,6 +8,7 @@ import {
   ApexAxisChartSeries,
   ApexChart,
   ApexXAxis,
+  ApexYAxis,
   ApexDataLabels,
   ApexTitleSubtitle,
   ApexStroke,
@@ -19,6 +20,7 @@ export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
+  yaxis: ApexYAxis | ApexYAxis[];
   dataLabels: ApexDataLabels;
   grid: ApexGrid;
   stroke: ApexStroke;
@@ -55,6 +57,7 @@ export class UserBoardComponent implements OnInit {
     })
 
     this.userService.currentUser.practices.find( practice =>{
+      if(practice.score)
       this.practiceResults.push(practice.score);
       if(!this.lastPractice.date && practice.date){this.lastPractice = practice}
       if(practice.date > this.lastPractice.date){
@@ -86,7 +89,7 @@ export class UserBoardComponent implements OnInit {
       },
       grid: {
         row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          colors: ["#f3f3f3", "transparent"],
           opacity: 0.5
         }
       },
@@ -103,6 +106,11 @@ export class UserBoardComponent implements OnInit {
           ""
         ]
       },
+      yaxis: {
+        min: 0,
+        max: 100,
+        tickAmount: 5
+      }
     };
 
     this.chartOptions2 = {
@@ -145,6 +153,11 @@ export class UserBoardComponent implements OnInit {
           "",
           ""
         ]
+      },
+      yaxis: {
+        min: 0,
+        max: 100,
+        tickAmount: 5
       }
     };
 
