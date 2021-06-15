@@ -46,27 +46,40 @@ export class SuperBoardComponent implements OnInit {
 
     console.log(userService.users);
 
+    for (let i = 0; i < userService.users.length; i++) {
+      var lastTestDate = null;
+      var lastTestScore = null;
+      for (let j = 0; j < userService.users[i].tests.length; j++) {
+
+        if((!lastTestDate && userService.users[i].tests[j].date) ||
+          (lastTestDate && userService.users[i].tests[j].date && userService.users[i].tests[j].date > lastTestDate)){
+          lastTestScore = userService.users[i].tests[j].score;
+          lastTestDate = userService.users[i].tests[j].date;
+        }
+
+      }
+      this.userService.users[i]['lastScore'] =  lastTestScore;
+      this.userService.users[i]['lastTestDate'] = lastTestDate;
+      this.overallLastTestScore.push(lastTestScore);
+        console.log(this.overallLastTestScore)
+    }
+
 
     for (let i = 0; i < userService.users.length; i++) {
       var scoreCount = 0;
       var itaretionCount = 0;
       this.userService.users[i]['tsetsTaken'] = 0;
-      this.userService.users[i]['lastScore'] = 0;
-      this.userService.users[i]['lastTestDate'] = this.userService.users[i].tests[0].date;
+
         for (let j = 0; j < this.userService.users[i].tests.length; j++){
           if(this.userService.users[i].tests[j].score){
             scoreCount += this.userService.users[i].tests[j].score;
             itaretionCount ++;
             this.userService.users[i]['tsetsTaken'] ++;
-            if(this.userService.users[i].tests[j].date > this.userService.users[i]['lastTestDate']){
-              this.userService.users[i]['lastTestDate'] = this.userService.users[i].tests[j].date;
-              this.userService.users[i]['lastScore'] = this.userService.users[i].tests[j].score;
-            }
           }
         }
       this.userService.users[i]['internAverage'] = scoreCount / this.userService.users[i]['tsetsTaken']
       this.allScore += scoreCount / itaretionCount;
-      this.overallLastTestScore.push(this.userService.users[i]['lastScore'])
+     
       if (scoreCount / itaretionCount > 80) this.internsAbove80++
     }
 
@@ -131,7 +144,7 @@ export class SuperBoardComponent implements OnInit {
     this.router.navigate(['/user-board'])
   }
 
- 
+
 
   ngOnInit(): void {}
 }

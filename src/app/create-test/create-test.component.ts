@@ -46,7 +46,7 @@ export class CreateTestComponent implements OnInit {
       },err =>{console.log(err);} )
 
     }
-
+    this.testService.test = new testModel;
     this.router.navigate(['/supervisor-board'])
 
 

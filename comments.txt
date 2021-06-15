@@ -4,5 +4,7 @@
 4. use local storage.
 5. add token
 6. show the right and wrong answers in "see result"
-7. change/fix charts
+{% comment %} 7. change/fix charts {% endcomment %}
 8. add google face recignition
+9. add practice creation
+10. use next() insted setTimeOut

@@ -41,6 +41,7 @@ export class ExamPageComponent implements OnInit {
 
   sendTest(){
 
+    this.testService.currentTest.date = new Date();
     this.testService.currentTest.score = 0;
     this.testService.currentTest.questions.forEach(element => {
       if(element.correct) this.testService.currentTest.score += 10;

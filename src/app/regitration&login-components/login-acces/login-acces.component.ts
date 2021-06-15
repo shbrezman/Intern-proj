@@ -61,7 +61,10 @@ export class LoginAccesComponent implements OnInit {
                 this.userService.supervisors = list;
                 console.log(list)
               }, err => console.log(err))
-              this.router.navigate(['/superadmin-board'])
+
+              setTimeout(() => {
+                this.router.navigate(['/superadmin-board'])
+              }, 500);
             }
             if(user.roleNumber == 200)
             {
@@ -80,6 +83,7 @@ export class LoginAccesComponent implements OnInit {
             }
             if(user.roleNumber == 100)
             {
+              this.testService.userRoll = 100;
               this.userService.currentUser = user;
               this.router.navigate(['/user-board']);
             }

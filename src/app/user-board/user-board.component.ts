@@ -47,18 +47,21 @@ export class UserBoardComponent implements OnInit {
   lastPractice = this.userService.currentUser.practices[0];
 
   constructor(public userService: UserService, private testService: TestService, private router: Router) {
-    console.log(this.lastPractice)
 
     this.userService.currentUser.tests.find( test =>{
-      this.testsResults.push(test.score);
+      if(test.score){
+        this.testsResults.push(test.score);
+      }
+      if(!this.lastTest.date && test.date){this.lastTest = test}
       if(test.date > this.lastTest.date){
         this.lastTest= test;
       }
     })
 
     this.userService.currentUser.practices.find( practice =>{
-      if(practice.score)
-      this.practiceResults.push(practice.score);
+      if(practice.score){
+        this.practiceResults.push(practice.score);
+      }
       if(!this.lastPractice.date && practice.date){this.lastPractice = practice}
       if(practice.date > this.lastPractice.date){
         this.lastPractice = practice;
