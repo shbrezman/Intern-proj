@@ -13,11 +13,15 @@ export class LoginAccesComponent implements OnInit {
   count: number;
   password: string;
   errMsg: string;
-  constructor(private userService: UserService,private testService: TestService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private testService: TestService,
+    private router: Router
+  ) {
     this.count = 0;
-    this.userService.currentUser = new UserModel;
-    this.userService.currentSuperVisor = new UserModel;
-    this.userService.currentSuperAdmin = new UserModel;
+    this.userService.currentUser = new UserModel();
+    this.userService.currentSuperVisor = new UserModel();
+    this.userService.currentSuperAdmin = new UserModel();
     this.userService.IdentifiedUser = false;
   }
 
@@ -46,52 +50,57 @@ export class LoginAccesComponent implements OnInit {
     this.password += p3;
     this.password += p4;
 
-
     this.userService.varifactionCode(this.password).subscribe((data) => {
       console.log(data);
       if (data.msg) {
         this.userService
           .getUser(this.userService.currentUser.phoneNumber)
-          .subscribe((user) => {
-            if(user.roleNumber == 300)
-            {
-              this.testService.userRoll = 300;
-              this.userService.currentSuperAdmin = user;
-              this.userService.getAllUsers(undefined, 200).subscribe(list =>{
-                this.userService.supervisors = list;
-                console.log(list)
-              }, err => console.log(err))
+          .subscribe(
+            (user) => {
+              if (user.roleNumber == 300) {
+                this.testService.userRoll = 300;
+                this.userService.currentSuperAdmin = user;
+                this.userService.getAllUsers(undefined, 200).subscribe(
+                  (list) => {
+                    this.userService.supervisors = list;
+                    console.log(list);
+                    this.router.navigate(['/superadmin-board']);
+                  },
+                  (err) => console.log(err)
+                );
 
-              setTimeout(() => {
-                this.router.navigate(['/superadmin-board'])
-              }, 500);
+                
+              }
+              if (user.roleNumber == 200) {
+                this.testService.userRoll = 200;
+                this.userService.currentSuperVisor = user;
+                this.userService
+                  .getAllUsers(
+                    this.userService.currentSuperVisor.medicalInstitution,
+                    100
+                  )
+                  .subscribe(
+                    (list) => {
+                      this.userService.users = list as UserModel[];
+                      console.log(this.userService.users);
+
+                      this.router.navigate(['/supervisor-board']);
+                    },
+                    (err) => console.log(err)
+                  );
+              }
+              if (user.roleNumber == 100) {
+                this.testService.userRoll = 100;
+                this.userService.currentUser = user;
+                this.router.navigate(['/user-board']);
+              }
+            },
+            (err) => {
+              this.errMsg =
+                'this phone number not register, please try different number';
             }
-            if(user.roleNumber == 200)
-            {
-              this.testService.userRoll = 200;
-              this.userService.currentSuperVisor = user;
-              this.userService.getAllUsers(this.userService.currentSuperVisor.medicalInstitution, 100)
-              .subscribe(list =>{
-                this.userService.users = list as UserModel[];
-                console.log(this.userService.users)
-
-              },err => console.log(err))
-              setTimeout(() => {
-                this.router.navigate(['/supervisor-board'])
-              }, 500);
-
-            }
-            if(user.roleNumber == 100)
-            {
-              this.testService.userRoll = 100;
-              this.userService.currentUser = user;
-              this.router.navigate(['/user-board']);
-            }
-
-          },(err) =>{
-            this.errMsg = 'this phone number not register, please try different number';
-          });
-          this.userService.IdentifiedUser = true;
+          );
+        this.userService.IdentifiedUser = true;
       } else {
         this.errMsg = 'The input password not matched, try again';
       }
