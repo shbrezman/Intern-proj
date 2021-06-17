@@ -3,6 +3,7 @@ import { testModel } from './test-model';
 export class UserModel {
   name: string;
   passportNumber: string;
+  token: string;
   phoneNumber: string;
   id: string;
   password: number;

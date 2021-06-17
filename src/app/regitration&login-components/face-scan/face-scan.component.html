@@ -15,10 +15,11 @@
       </div>
     </div>
     <div class="col-5">
-      <webcam [height]="600"
+      <webcam
+        [height]="600"
         [width]="600"
         [trigger]="triggerObservable"
-            (imageCapture)="handleImage($event)">
+        (imageCapture)="handleImage($event)">
       </webcam>
 
       <button class="btn btn-lg btn-primary col" style="margin-left: 20%;" (click)="triggerSnapshot();">
