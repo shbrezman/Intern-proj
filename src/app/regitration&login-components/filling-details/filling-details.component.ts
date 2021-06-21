@@ -1,3 +1,4 @@
+import { TestService } from './../../services/test.service';
 import { UserModel } from '../../models/user-model';
 import { HttpResponse } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
@@ -15,8 +16,8 @@ export class FillingDetailsComponent implements OnInit {
 
   screen = true;
   progressNumber = 0;
-  error = false;
-  constructor(public userService: UserService, private router: Router) { }
+
+  constructor(public userService: UserService, private router: Router, private testService: TestService) { }
 
   ngOnInit(): void {
   }
@@ -42,6 +43,10 @@ export class FillingDetailsComponent implements OnInit {
       new testModel,
     ];
 
+    this.userService.currentUser.roleNumber = 100;
+    this.testService.userRoll = 100;
+    this.userService.IdentifiedUser = true;
+
 
     this.userService.registerUser(this.userService.currentUser).subscribe(data =>{
       if(data){
@@ -50,7 +55,7 @@ export class FillingDetailsComponent implements OnInit {
     },
     error =>{
       console.log(error)
-     this.error = true;
+     
     }
       )
   }

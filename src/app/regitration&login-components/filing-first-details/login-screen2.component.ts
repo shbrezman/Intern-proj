@@ -1,6 +1,7 @@
 import { UserModel } from '../../models/user-model';
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-screen2',
@@ -10,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class LoginScreen2Component implements OnInit {
 
   user: UserModel ;
+  error = false;
 
   password = 0;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.user = userService.currentUser;
 
 
@@ -28,10 +30,11 @@ export class LoginScreen2Component implements OnInit {
 
     this.userService.currentUser = this.user;
 
-    this.userService.sendSms().subscribe(data => {console.log(data)});
-
-  }
-  chack(aa){
-    console.log(aa);
+    this.userService.getUser(this.userService.currentUser.phoneNumber).subscribe(user =>{
+      this.error = true;
+    },err =>{
+      this.userService.sendSms().subscribe(data => {console.log(data)});
+      this.router.navigate(['/loginScreen3'])
+    })
   }
 }

@@ -37,7 +37,10 @@
         <h5 class="d-flex justify-content-center">A verifacation code will sent to you to this phone number.</h5>
         <br>
 <div class="d-flex justify-content-center">
-  <button [disabled]='form1.invalid' class="btn btn-primary btn-lg justify-content-center" type="submit" [routerLink]="['/loginScreen3']" (click)="getInformation()">CONTINUE</button>
+  <h5 *ngIf="error" style="color: red;">Phone number allredy exist, type differnt phone number</h5>
+</div>
+<div class="d-flex justify-content-center">
+  <button [disabled]='form1.invalid' class="btn btn-primary btn-lg justify-content-center" type="submit" (click)="getInformation()">CONTINUE</button>
 </div>
 
 

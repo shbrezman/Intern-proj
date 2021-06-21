@@ -29,12 +29,13 @@ export class UserService {
 
 
   registerUser(user: UserModel): Observable<Object> {
-    return this.http.post(this.baseUrl + "api/users/create", user, this.getOptions());
+    return this.http.post(this.baseUrl + "auth/create", user, this.getOptions());
   }
 
   getUser<T>(phoneNumber: String): Observable<UserModel> {
     return this.http.get<UserModel>(this.baseUrl + "auth/getUser/" + phoneNumber).pipe(tap(user =>{
       this.token = user.token;
+      console.log(this.token)
       console.log(user)
       console.log(user.token)
     }))
@@ -63,6 +64,8 @@ export class UserService {
   }
 
   updateUser(id: string, tests): Observable<any> {
+    console.log('in update client');
+
     return this.http.put(this.baseUrl + "api/users/updateUser", {id: id, tests: tests}, this.getOptions())
   }
 
