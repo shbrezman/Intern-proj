@@ -3,7 +3,7 @@
   <div class="col-3 border justify-content-center text-center">
 
     <img class="m-3" [src]="userService.currentSuperVisor.img" alt="" style="width: 130px; height: 130px; border-radius: 100%;" >
-    <h1>{{userService.currentSuperVisor.name}}</h1>
+    <h1>{{userService.currentSuperVisor.name | titlecase}}</h1>
     <h4 class="py-1">{{userService.currentSuperVisor.medicalInstitution}} Hospital</h4>
     <h5 class="text-primary mb-4">A supervosor</h5>
 
@@ -56,7 +56,7 @@
     </div>
     <div class="row m-2 border-bottom text-center" *ngFor="let user of userService.users; let i=index">
       <div class="col-2 py-3">
-        <b>{{user.name}}</b>
+        <b>{{user.name | titlecase}}</b>
       </div>
       <div class="col-2 py-3">
         {{user['tsetsTaken']}}
@@ -70,7 +70,7 @@
       <div class="col-2 py-3">
         {{user['lastScore']}}
       </div>
-      
+
       <div class="col-2">
         <button class="btn btn-secondary m-2" (click)="internClick(i)">View Profile</button>
       </div>

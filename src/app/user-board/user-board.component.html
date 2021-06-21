@@ -1,7 +1,7 @@
 <div class="row mx-1">
   <div class="col-3 border justify-content-center text-center p-2">
     <img class="m-3" [src]="userService.currentUser.img" alt="" style="width: 130px; height: 130px; border-radius: 100%;">
-    <h4 class="">{{userService.currentUser.name}}</h4>
+    <h4 class="">{{userService.currentUser.name | titlecase}}</h4>
 
     <p>{{userService.currentUser.medicalInstitution}} hospital</p>
     <p>{{userService.currentUser.residancyYear}} year {{userService.currentUser.department}} intern</p>
