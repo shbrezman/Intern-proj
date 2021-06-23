@@ -2,12 +2,13 @@ import { TestService } from './../services/test.service';
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../services/image.service';
 
+
 @Component({
-  selector: 'app-images',
-  templateUrl: './images.component.html',
-  styleUrls: ['./images.component.css']
+  selector: 'app-files',
+  templateUrl: './files.component.html',
+  styleUrls: ['./files.component.css']
 })
-export class ImagesComponent implements OnInit {
+export class FilesComponent implements OnInit {
 
   constructor(private service:ImageService, public testService: TestService) { }
 

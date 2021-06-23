@@ -4,12 +4,12 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from "rxjs/operators";
 import { ImageService } from 'src/app/services/image.service';
 
-
 @Component({
-  selector: 'app-file',
-  templateUrl: './File.component.html'
+  selector: 'app-upload-file',
+  templateUrl: './upload-file.component.html',
+  styleUrls: ['./upload-file.component.css']
 })
-export class FileComponent implements OnInit {
+export class UploadFileComponent implements OnInit {
 
   imgSrc: string;
   selectedImage: any = null;
@@ -74,5 +74,6 @@ export class FileComponent implements OnInit {
     this.selectedImage = null;
     this.isSubmitted = false;
   }
+
 
 }
