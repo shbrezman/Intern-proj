@@ -13,9 +13,13 @@ import { SuperadminBoardComponent } from './superadmin-board/superadmin-board.co
 import { CreateTestComponent } from './create-test/create-test.component';
 import { ExamPageComponent } from './exam-page/exam-page.component';
 import { AaaComponent } from './aaa/aaa.component';
+import { ImagesComponent } from './images/images.component';
+import { FileComponent } from './images/upload-file/file.component';
+import { FileListComponent } from './images/file-list/file-list.component';
 
 const routes: Routes = [
-  { path: '', component: LoginScreen1Component },
+  { path: '', redirectTo: 'file/list', pathMatch: 'full' },
+  { path: 'a', component: LoginScreen1Component },
   { path: 'loginScreen2', component:LoginScreen2Component },
   { path: 'loginScreen3', component:LoginScreen3Component},
   { path: 'faceScan', component:FaceScanComponent},
@@ -28,6 +32,10 @@ const routes: Routes = [
   { path: 'create-test', component:CreateTestComponent},
   { path: 'exam-page', component:ExamPageComponent},
   { path: 'aaa', component:AaaComponent},
+  { path: 'file', component:ImagesComponent, children:[
+    {path: 'upload', component: FileComponent},
+    {path: 'list', component: FileListComponent}
+  ]},
 
 
 ];

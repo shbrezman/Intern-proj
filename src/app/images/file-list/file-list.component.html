@@ -1,0 +1,19 @@
+<div class="container mb-lg-5 mt-5">
+  <div class="row col border-bottom m-2">
+    <div class="col-8 ms-5 "><p class="align-middle pt-1 text-secondary" style="font-size: 18px;">&nbsp;Title</p></div>
+    <div class="col-2"><p class="align-middle pt-1 text-secondary" style="font-size: 18px;">Upload date</p></div>
+
+
+  </div>
+  <div class="row col border-bottom m-2" *ngFor="let item of fileList">
+    <div class="col-8 ms-4"><p class="align-middle pt-1" style="font-size: 25px;">📃&nbsp;&nbsp;&nbsp;{{item.caption}}</p></div>
+    <div class="col-2"><p class="align-middle pt-1" style="font-size: 25px;">{{item.uploadDate | date: 'dd/MM/yy'}}</p></div>
+    <div class="col-1 mt-1 mb-2">
+      <a [href]="item.fileUrl" class="btn btn-primary btn-lg"(click)="show(item)">download</a>
+    </div>
+
+  </div>
+  <div class="text-center">
+    <button class="btn btn-secondary" [routerLink]="['/routePath']" routerLinkActive="router-link-active" >Back To Board</button>
+  </div>
+</div>

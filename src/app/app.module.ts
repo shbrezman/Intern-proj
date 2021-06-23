@@ -21,6 +21,14 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { SuperadminBoardComponent } from './superadmin-board/superadmin-board.component';
 import { CreateTestComponent } from './create-test/create-test.component';
 import { ExamPageComponent } from './exam-page/exam-page.component';
+import { ImagesComponent } from './images/images.component';
+import { FileComponent } from './images/upload-file/file.component';
+import { FileListComponent } from './images/file-list/file-list.component';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { environment } from "../environments/environment";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 
@@ -45,6 +53,9 @@ import { ExamPageComponent } from './exam-page/exam-page.component';
     SuperadminBoardComponent,
     CreateTestComponent,
     ExamPageComponent,
+    ImagesComponent,
+    FileComponent,
+    FileListComponent,
 
 
 
@@ -56,7 +67,12 @@ import { ExamPageComponent } from './exam-page/exam-page.component';
     FormsModule,
     WebcamModule,
     HttpClientModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

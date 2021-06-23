@@ -4,13 +4,16 @@
 
 export const environment = {
   production: false,
-
-
-AccessKeyID : 'AKIA6JHB2FPB2UI6ECML',
-SecretAccessKey : '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'
-
-
-
+  firebaseConfig : {
+    apiKey: "AIzaSyC9BLinaM0hsjGl-gbbYGbabH4yt-89Wxw",
+    authDomain: "angular-image-gallery-352b5.firebaseapp.com",
+    databaseURL: "https://angular-image-gallery-352b5-default-rtdb.firebaseio.com",
+    projectId: "angular-image-gallery-352b5",
+    storageBucket: "angular-image-gallery-352b5.appspot.com",
+    messagingSenderId: "438231266857",
+    appId: "1:438231266857:web:db1e3464706a1e0baa8e38",
+    measurementId: "G-GSDTNLX9P6"
+  }
 };
 
 /*
