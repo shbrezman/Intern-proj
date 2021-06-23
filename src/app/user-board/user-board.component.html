@@ -16,7 +16,10 @@
       {{lastPractice.score}}</h1>
   </div>
   <div class="col-5 border ">
-    <div class="row" style="height: 100px;">
+    <div class="row m-3 text-center d-flex justify-content-center border-bottom pb-3">
+      <button class="btn btn-success btn-lg col-9" [routerLink]="['/file/list']">Go To Auxiliary Materials</button>
+    </div>
+    <div class="row" style="height: 40px;">
       <p class="col-6 mt-2 ml-2" style="font-size: 17px;"><b>YOUR PRACTICES & TESTS ({{userService.currentUser.tests.length +
         userService.currentUser.practices.length}})</b></p>
       <p class="col mt-2" style="margin-left: 120px; font-size: 17px;">See results</p>
