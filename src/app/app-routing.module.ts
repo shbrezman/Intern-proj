@@ -18,8 +18,7 @@ import { FileComponent } from './images/upload-file/file.component';
 import { FileListComponent } from './images/file-list/file-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'file/list', pathMatch: 'full' },
-  { path: 'a', component: LoginScreen1Component },
+  { path: '', component: LoginScreen1Component },
   { path: 'loginScreen2', component:LoginScreen2Component },
   { path: 'loginScreen3', component:LoginScreen3Component},
   { path: 'faceScan', component:FaceScanComponent},

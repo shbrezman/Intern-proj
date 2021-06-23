@@ -8,5 +8,6 @@
 8. add google face recignition
 9. add practice creation
 10. add using in AWS
-
+11. create array and select tag for medical instatution
+12. fill automaticlly new user tests
 

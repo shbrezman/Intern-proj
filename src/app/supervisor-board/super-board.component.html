@@ -7,9 +7,12 @@
     <h4 class="py-1">{{userService.currentSuperVisor.medicalInstitution}} Hospital</h4>
     <h5 class="text-primary mb-4">A supervosor</h5>
 
-    <div class="row d-flex pb-3 border-bottom mx-4 justify-content-center">
+    <div class="row d-flex pb-3 mx-4 justify-content-center">
       <button class="mx-2 btn btn-primary" [routerLink]="['/create-test']">Create Test</button>
       <button class="mx-2 btn btn-primary" [routerLink]="['/create-test']">Create practice</button>
+    </div>
+    <div class="row d-flex pb-3 border-bottom mx-4 justify-content-center">
+      <button class="mx-2 btn btn-success" [routerLink]="['/file/list']">Add Auxiliary materials</button>
     </div>
 
       <h1 class="text-info display-4 mt-2">{{userService.users.length}}</h1>
