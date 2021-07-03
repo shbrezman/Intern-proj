@@ -5,9 +5,14 @@
 {% comment %} 5. add token {% endcomment %}
 {% comment %} 6. show the right and wrong answers in "see result" {% endcomment %}
 {% comment %} 7. change/fix charts {% endcomment %}
-8. add google face recignition
-9. add practice creation
-10. add using in AWS
-11. create array and select tag for medical instatution
-12. fill automaticlly new user tests
-
+8. adding google face recignition
+9. adding practice creation as practice
+10. adding use in AWS
+{% comment %} 11. create array and select tag for medical instatution {% endcomment %}
+{% comment %} 12. fill automaticlly new user tests {% endcomment %}
+{% comment %} 13. fill automaticlly new supervisor image {% endcomment %}
+14. adding a querys for the documents list
+{% comment %} 15. adding test name in test page {% endcomment %}
+{% comment %} 16. hide add Auxiliary Materials button inside the adding page ===>>> canceld {% endcomment %}
+{% comment %} 17. disabled add Auxiliary Materials button for super admin {% endcomment %}
+{% comment %} 18. disabled add test button for super admin {% endcomment %}

@@ -12,10 +12,11 @@ export class FileListComponent implements OnInit {
   fileList: any[];
 
 
-  constructor(private service: ImageService) { }
+  constructor(private imageService: ImageService) { }
 
   ngOnInit() {
-    this.service.fileDetailsList.snapshotChanges().subscribe(
+    
+    this.imageService.fileDetailsList.snapshotChanges().subscribe(
       list => {
         this.fileList = list.map(item => { return item.payload.val(); });
 

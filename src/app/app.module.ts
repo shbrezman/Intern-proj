@@ -32,6 +32,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FilesComponent } from './files/files.component';
 import { UploadFileComponent } from './files/upload-file/upload-file.component';
 import { FileListComponent } from './files/file-list/file-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -74,7 +75,8 @@ import { FileListComponent } from './files/file-list/file-list.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

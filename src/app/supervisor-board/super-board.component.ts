@@ -1,3 +1,4 @@
+import { TestService } from './../services/test.service';
 import { UserService } from '../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
@@ -42,7 +43,7 @@ export class SuperBoardComponent implements OnInit {
   allScore = 0;
   overallLastTestScore = [];
 
-  constructor(public userService: UserService, private router: Router) {
+  constructor(public userService: UserService, private router: Router, public testService: TestService) {
 
     console.log(userService.users);
 
@@ -79,7 +80,7 @@ export class SuperBoardComponent implements OnInit {
         }
       this.userService.users[i]['internAverage'] = scoreCount / this.userService.users[i]['tsetsTaken']
       this.allScore += scoreCount / itaretionCount;
-     
+
       if (scoreCount / itaretionCount > 80) this.internsAbove80++
     }
 

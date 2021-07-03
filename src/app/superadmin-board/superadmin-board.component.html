@@ -10,7 +10,7 @@
       <h1 class="text-info display-3">{{userService.supervisors.length}}</h1>
       <h5 class="mb-5">Active supervisors</h5>
 
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Supervisor</button>
+      <button type="button" class="btn btn-primary mb-lg-5" data-toggle="modal" data-target="#exampleModal">Add Supervisor</button>
 
 
 
@@ -79,7 +79,13 @@
           </div>
           <div class="form-group">
             <label for="supervisor-medical-institution" class="col-form-label">Supervisor medicalInstitution:</label>
-            <input #supervisorMedicalInstitution type="text" class="form-control" id="supervisor-medical-institution">
+            <!-- <input #supervisorMedicalInstitution type="text" class="form-control" id="supervisor-medical-institution"> -->
+            <div class="form-group">
+              <select #supervisorMedicalInstitution id="supervisorMedicalInstitution" class="form-control">
+                <option selected disabled>Medical Instatusion</option>
+                <option #option id="option" *ngFor="let item of hospitals" value="{{item}}" >{{item}}</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label for="recipient-id" class="col-form-label">Supervisor id:</label>

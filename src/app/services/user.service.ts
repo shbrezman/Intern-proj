@@ -4,6 +4,7 @@ import { UserModel } from './../models/user-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import{ environment }from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,9 @@ export class UserService {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   
+  }
 
 
   registerUser(user: UserModel): Observable<Object> {
@@ -70,9 +73,12 @@ export class UserService {
   }
 
   getOptions(headers?: any) {
+    console.log('start get opt');
+
     headers = headers? headers : {};
     headers['content-type'] = 'application/json';
     headers['x-access-token'] = this.token;
+    console.log('end get opt');
     return {
       headers: new HttpHeaders(headers)
     }

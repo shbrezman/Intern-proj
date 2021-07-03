@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -17,15 +18,15 @@ export class UploadFileComponent implements OnInit {
 
   formTemplate = new FormGroup({
     caption: new FormControl('', Validators.required),
-    medInstatution: new FormControl('', Validators.required),
-    fileUrl: new FormControl('', Validators.required),
+    fileUrl: new FormControl('', Validators.required)
 
   })
 
-  constructor(private storage: AngularFireStorage, private service: ImageService) { }
+  constructor(private storage: AngularFireStorage, private imageService: ImageService, private userService: UserService) { }
 
   ngOnInit() {
     this.resetForm();
+    
   }
 
   showPreview(event: any) {
@@ -50,7 +51,8 @@ export class UploadFileComponent implements OnInit {
           fileRef.getDownloadURL().subscribe((url) => {
             formValue['fileUrl'] = url;
             formValue['uploadDate'] = new Date(Date.now()).toISOString();
-            this.service.insertImageDetails(formValue);
+            formValue['medInstatution'] = this.userService.currentSuperVisor.medicalInstitution;
+            this.imageService.insertImageDetails(formValue);
             this.resetForm();
             console.log('upload successy')
           })
@@ -67,7 +69,6 @@ export class UploadFileComponent implements OnInit {
     this.formTemplate.reset();
     this.formTemplate.setValue({
       caption: '',
-      medInstatution: '',
       fileUrl: ''
     });
     this.imgSrc = 'https://tapsmart-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/files-icon-750x400.png';

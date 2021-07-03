@@ -56,8 +56,15 @@
   <div class="row">
     <div class="col-5">
       <h4 style="color: grey;" class="">Medical Instatusion</h4>
-      <input name="f" [(ngModel)]="userService.currentUser.medicalInstitution" type="text" class="form-control"
-        placeholder="Medical Instatusion" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,6}$">
+      <!-- <input name="f" [(ngModel)]="userService.currentUser.medicalInstitution" type="text" class="form-control"
+        placeholder="Medical Instatusion" required pattern="^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,6}$"> -->
+        <div class="form-group">
+          <select #inputState id="inputState" class="form-control" (change)="show(inputState.value)"
+          [(ngModel)]="userService.currentUser.medicalInstitution" [ngModelOptions]="{standalone: true}">
+            <option selected disabled>Medical Instatusion</option>
+            <option #option id="option" *ngFor="let item of hospitals" value="{{item}}" >{{item}}</option>
+          </select>
+        </div>
     </div>
     <div class="col">
       <h4 style="color: grey;">Residancy</h4>
@@ -80,7 +87,7 @@
     </div>
   </div>
   <br><br>
-  
+
   <div class="text-center">
   <button class="btn btn-dark btn-lg" (click)="done()" [disabled]='detailsForm2.invalid'>DONE</button>
 </div>

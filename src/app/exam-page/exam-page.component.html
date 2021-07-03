@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-2"></div>
   <div class="col-8">
-    <h3 class="pb-5 border-bottom">Hello {{userService.currentUser.name}}</h3>
+    <h2 class="pb-5 border-bottom lead" style="font-size: 30px;">Hello {{userService.currentUser.name}}</h2>
+    <div class="text-center">
+      <h1 class="pb-5 lead mt-3" style="font-size: 40px;">{{testService.currentTest.title}}</h1>
+    </div>
     <form>
       <div class="question mb-3 border-bottom" *ngFor="let q of testService.currentTest.questions; let i=index">
         <div class="row body">
