@@ -42,6 +42,7 @@ export class SuperBoardComponent implements OnInit {
   internsAbove80 = 0;
   allScore = 0;
   overallLastTestScore = [];
+  averageDevision = 0;
 
   constructor(public userService: UserService, private router: Router, public testService: TestService) {
 
@@ -67,8 +68,8 @@ export class SuperBoardComponent implements OnInit {
 
 
     for (let i = 0; i < userService.users.length; i++) {
-      var scoreCount = 0;
-      var itaretionCount = 0;
+      var scoreCount = null;
+      var itaretionCount = null;
       this.userService.users[i]['tsetsTaken'] = 0;
 
         for (let j = 0; j < this.userService.users[i].tests.length; j++){
@@ -79,7 +80,11 @@ export class SuperBoardComponent implements OnInit {
           }
         }
       this.userService.users[i]['internAverage'] = scoreCount / this.userService.users[i]['tsetsTaken']
-      this.allScore += scoreCount / itaretionCount;
+      if(scoreCount && itaretionCount){
+        this.allScore += scoreCount / itaretionCount;
+        this.averageDevision ++;
+      }
+
 
       if (scoreCount / itaretionCount > 80) this.internsAbove80++
     }
