@@ -16,9 +16,6 @@ export class ImageService {
   constructor(private Firebase: AngularFireDatabase, private userService: UserService, private testService: TestService) { }
 
   getImageDetailList() {
-
-    //this.fileDetailsList = this.Firebase.list('fileDetails')
-    //this.query = this.testService.userRoll == 100 ? this.userService.currentSuperVisor.medicalInstitution : this.userService.currentSuperVisor.medicalInstitution;
     this.fileDetailsList = this.Firebase.list('fileDetails',
       ref => ref.orderByChild('medInstatution').equalTo(this.userService.currentUser.medicalInstitution || this.userService.currentSuperVisor.medicalInstitution)
     );
@@ -31,6 +28,4 @@ export class ImageService {
   }
 }
 
-// var ref = firebase.database().ref("dinosaurs");
-//      ref.orderByKey().endAt("pterodactyl").on("child_added", function(snapshot) {
-//        console.log(snapshot.key);
+
