@@ -11,9 +11,9 @@
 
 ## Supervisor access:
 
-### Follow the previos instructions, but type 888 or 881 in the phone number input field.
+#### Follow the previos instructions, but type 888 or 881 in the phone number input field.
 
 ## Super admin access:
 
-### Follow the previos instructions, but type 999 in the phone number input field.
+#### Follow the previos instructions, but type 999 in the phone number input field.
 
