@@ -15,17 +15,11 @@ export class FileListComponent implements OnInit {
   constructor(private imageService: ImageService) { }
 
   ngOnInit() {
-    
+
     this.imageService.fileDetailsList.snapshotChanges().subscribe(
       list => {
         this.fileList = list.map(item => { return item.payload.val(); });
-
-        console.log(this.fileList);
       }
     );
-  }
-
-  show(item){
-    console.log(item);
   }
 }

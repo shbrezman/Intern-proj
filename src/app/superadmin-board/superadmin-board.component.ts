@@ -24,7 +24,6 @@ export class SuperadminBoardComponent implements OnInit {
     this.userService.getAllUsers(this.userService.currentSuperVisor.medicalInstitution, 100)
     .subscribe(list =>{
       this.userService.users = list as UserModel[];
-      console.log(this.userService.users)
       this.router.navigate(['/supervisor-board'])
     },err => console.log(err))
 

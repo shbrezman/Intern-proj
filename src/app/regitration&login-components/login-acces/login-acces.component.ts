@@ -63,13 +63,12 @@ export class LoginAccesComponent implements OnInit {
                 this.userService.getAllUsers(undefined, 200).subscribe(
                   (list) => {
                     this.userService.supervisors = list;
-                    console.log(list);
                     this.router.navigate(['/superadmin-board']);
                   },
                   (err) => console.log(err)
                 );
 
-                
+
               }
               if (user.roleNumber == 200) {
                 this.testService.userRoll = 200;
@@ -82,8 +81,6 @@ export class LoginAccesComponent implements OnInit {
                   .subscribe(
                     (list) => {
                       this.userService.users = list as UserModel[];
-                      console.log(this.userService.users);
-
                       this.router.navigate(['/supervisor-board']);
                     },
                     (err) => console.log(err)

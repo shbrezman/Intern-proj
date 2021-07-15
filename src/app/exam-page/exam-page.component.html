@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-2"></div>
   <div class="col-8">
-    <h2 class="pb-5 border-bottom lead" style="font-size: 30px;">Hello {{userService.currentUser.name}}</h2>
+    <h2 class="pb-5 border-bottom lead" style="font-size: 30px;">{{userService.currentUser.name}}</h2>
     <div class="text-center">
       <h1 class="pb-5 lead mt-3" style="font-size: 40px;">{{testService.currentTest.title}}</h1>
     </div>
@@ -16,26 +16,26 @@
             <fieldset>
           <div class="row">
             <input #answer1 class="form-check-input" name="question{{i}}" type="radio" value="0"
-              id="answer1" (click)="clic(answer1.value, i)" [disabled]="testService.currentTest.score"
+              id="answer1" (click)="clickInput(answer1.value, i)" [disabled]="testService.currentTest.score"
                [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'A'">
             <label class="form-check-label" for="answer1">{{testService.currentTest.questions[i].answers[0]}}</label>
           </div>
 
           <div class="row">
             <input #answer2 class="form-check-input" name="question{{i}}" type="radio" value="1"
-              id="answer2" (click)="clic(answer2.value, i)" [disabled]="testService.currentTest.score"
+              id="answer2" (click)="clickInput(answer2.value, i)" [disabled]="testService.currentTest.score"
               [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'B'">
             <label class="form-check-label" for="answer1">{{testService.currentTest.questions[i].answers[1]}}</label>
           </div>
           <div class="row">
             <input #answer3 class="form-check-input" name="question{{i}}" type="radio" value="2"
-              id="answer3" (click)="clic(answer3.value, i)" [disabled]="testService.currentTest.score"
+              id="answer3" (click)="clickInput(answer3.value, i)" [disabled]="testService.currentTest.score"
               [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'C'">
             <label class="form-check-label" for="answer3">{{testService.currentTest.questions[i].answers[2]}}</label>
           </div>
           <div class="row">
             <input #answer4 class="form-check-input" name="question{{i}}" type="radio" value="3"
-              id="answer4" (click)="clic(answer4.value, i)" [disabled]="testService.currentTest.score"
+              id="answer4" (click)="clickInput(answer4.value, i)" [disabled]="testService.currentTest.score"
               [checked]="testService.currentTest.score && testService.currentTest.questions[i].examineeAnswer == 'D'">
             <label class="form-check-label" for="answer4">{{testService.currentTest.questions[i].answers[3]}}</label>
           </div>

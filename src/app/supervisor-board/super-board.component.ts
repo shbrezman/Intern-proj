@@ -46,8 +46,6 @@ export class SuperBoardComponent implements OnInit {
 
   constructor(public userService: UserService, private router: Router, public testService: TestService) {
 
-    console.log(userService.users);
-
     for (let i = 0; i < userService.users.length; i++) {
       var lastTestDate = null;
       var lastTestScore = null;
@@ -63,7 +61,6 @@ export class SuperBoardComponent implements OnInit {
       this.userService.users[i]['lastScore'] =  lastTestScore;
       this.userService.users[i]['lastTestDate'] = lastTestDate;
       this.overallLastTestScore.push(lastTestScore);
-        console.log(this.overallLastTestScore)
     }
 
 
@@ -145,8 +142,6 @@ export class SuperBoardComponent implements OnInit {
 
   internClick(index): void{
     this.userService.currentUser = this.userService.users[index];
-    console.log(this.userService.currentUser);
-
     this.router.navigate(['/user-board'])
   }
 
