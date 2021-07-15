@@ -11,7 +11,7 @@
 {% comment %} 11. create array and select tag for medical instatution {% endcomment %}
 {% comment %} 12. fill automaticlly new user tests {% endcomment %}
 {% comment %} 13. fill automaticlly new supervisor image {% endcomment %}
-14. adding a querys for the documents list
+{% comment %} 14. adding a querys for the documents list {% endcomment %}
 {% comment %} 15. adding test name in test page {% endcomment %}
 {% comment %} 16. hide add Auxiliary Materials button inside the adding page ===>>> canceld {% endcomment %}
 {% comment %} 17. disabled add Auxiliary Materials button for super admin {% endcomment %}

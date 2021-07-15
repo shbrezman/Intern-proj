@@ -16,7 +16,8 @@ export class CreateTestComponent implements OnInit {
 
   constructor(public testService: TestService, private userService: UserService, private router: Router) {
 
-    this.arr = [0, 1, 2]
+    this.arr = [0, 1, 2];
+
 
     testService.test.questions = [new questionModel, new questionModel, new questionModel]
 
@@ -38,8 +39,8 @@ export class CreateTestComponent implements OnInit {
   create(){
     console.log(this.testService.test);
     for (let i = 0; i < this.userService.users.length; i++) {
-      this.userService.users[i].tests = [...this.userService.users[i].tests, this.testService.test]
-      this.userService.updateUser(this.userService.users[i].id, {tests: this.userService.users[i].tests}).subscribe(data =>{
+      this.userService.users[i].tests.push(this.testService.test);
+      this.userService.updateUser(this.userService.users[i].id, this.userService.users[i].tests).subscribe(data =>{
         if(data){
           console.log(data)
         }

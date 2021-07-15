@@ -11,7 +11,8 @@ import{ environment }from '../../environments/environment'
 })
 export class UserService {
 
-  baseUrl = 'http://localhost:8080/';
+  //baseUrl = 'http://localhost:8080/';
+  baseUrl = 'https://interns-proj.herokuapp.com/';
 
   IdentifiedUser = false;
   errorMsg = "";
