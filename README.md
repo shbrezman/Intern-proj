@@ -7,7 +7,7 @@
 #### 2. Type a number between 111 and 119 in the phone number input field.
 #### 3. Click on **'SEND CODE'** button. A code will be sent to your browser's console (it might take a few seconds, until the Heroku server will be initialized). 
 #### 4. Type the code in the code input field. 
-#### (sending the code by sms is wrriten in the server side code, but is not in use because of a payment limit)
+#### (sending the code by sms is written in the server side code, but is not in use because of a payment limit)
 
 ## Supervisor access:
 
